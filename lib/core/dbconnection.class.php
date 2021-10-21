@@ -1,8 +1,8 @@
 <?php
 
 define ('HOST', 'pedago01c.univ-avignon.fr') ;
-define ('USER', ''  ) ;
-define ('PASS', '' ) ;
+define ('USER', 'uapv1801268'  ) ;
+define ('PASS', 'SYSY7r' ) ;
 define ('DB', 'etd' ) ;
 
 use Doctrine\ORM\Tools\Setup;
@@ -17,11 +17,11 @@ private function __construct(){
 	$config = Setup::createAnnotationMetadataConfiguration(array("../../monApplication/model/"), true);
 
 	$param = array(
-	'dbname' => 'cericar',
-	'user'	=> 'root',
-	'password' => '',
-	'host'	=> 'localhost',
-	'driver' => 'pdo_mysql');
+	'dbname' => DB,
+	'user'	=> USER,
+	'password' => PASS,
+	'host'	=> HOST,
+	'driver' => 'pdo_pgsql');
 	
 
 

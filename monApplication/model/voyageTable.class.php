@@ -1,5 +1,5 @@
 <?php
-// Inclusion de la classe utilisateur
+
 require_once "voyage.class.php";
 
 class voyageTable {
@@ -9,9 +9,9 @@ class voyageTable {
   	$em = dbconnection::getInstance()->getEntityManager() ;
 
 	$voyageRepository = $em->getRepository('voyage');
-	$voyage = $voyageRepository->findBy(array('trajet' => $trajet->id ));	
+	$voyage = $voyageRepository->findBy(array('trajet' => $trajet ));	
 	
-    if ($trajet == false){
+    if ($voyage == false){
 		echo 'Erreur sql';
 			   }
     
