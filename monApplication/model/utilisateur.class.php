@@ -27,6 +27,12 @@ class utilisateur{
 
 	/** @Column(type="string", length=200) */ 
 	public $avatar;
+	
+	/**
+	*@OneToMany(targetEntity="reservation", mappedBy="id")
+	*@JoinColumn(name="reservations", referencedColumnName="id")
+	*/
+	public $reservations;
 
 	
 }

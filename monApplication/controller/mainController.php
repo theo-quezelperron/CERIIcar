@@ -23,12 +23,12 @@ class mainController
 	}
 
 	public static function testModel($request, $context){
-		$context->user = utilisateurTable::getUserByLoginAndPass('','Password');
-        $context->trajet = trajetTable::getTrajet('Marseille','Paris');
-        $context->voyages = voyageTable::getVoyagesByTrajet(1);
-        $context->reservations = reservationTable::getReservationByVoyage(1);
-        $context->userid = utilisateurTable::getUserByID(10);
-        return context::SUCCESS;
+		$context->user = utilisateurTable::getUserByLoginAndPass('User1','0bc8658ea4e2f64af9d6890eace91a819f9f2046');
+      $context->trajet = trajetTable::getTrajet('Marseille','Paris');
+      $context->voyages = voyageTable::getVoyagesByTrajet(99);
+      $context->reservations = reservationTable::getReservationByVoyage(1);
+      $context->userid = utilisateurTable::getUserByID(2);
+      return context::SUCCESS;
 	}
 
 }
