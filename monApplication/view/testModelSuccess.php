@@ -35,4 +35,13 @@
     echo "Départ voyage : " . $reservation->voyages->trajet->depart . "<br>";
     echo "Nom voyageur : " . $reservation->voyageur->nom . "<br>";
 }
+
+    echo "<br>";
+    echo "ID : " . $context->userid->id . "<br>";
+    echo "Identifiant : " . $context->userid->identifiant . "<br>";
+    echo "Password : " . $context->userid->pass . "<br>";
+    echo "Nom : " . $context->userid->nom . "<br>";
+    echo "Prénom : " . $context->userid->prenom . "<br>";
+    echo "Avatar : " . $context->userid->avatar . "<br>";
+    
 ?>
