@@ -1,8 +1,8 @@
 <?php
 
-define ('HOST', 'pedago.univ-avignon.fr') ;
-define ('USER', 'uapv1801268'  ) ;
-define ('PASS', 'BP6qFPv6Ade2zE2' ) ;
+define ('HOST', 'pedago01c.univ-avignon.fr') ;
+define ('USER', ''  ) ;
+define ('PASS', '' ) ;
 define ('DB', 'etd' ) ;
 
 use Doctrine\ORM\Tools\Setup;
@@ -17,10 +17,10 @@ private function __construct(){
 	$config = Setup::createAnnotationMetadataConfiguration(array("../../monApplication/model/"), true);
 
 	$param = array(
-	'dbname' => 'etd',
-	'user'	=> 'uapv1801268',
-	'password' => 'BP6qFPv6Ade2zE2',
-	'host'	=> 'pedago.univ-avignon.fr',
+	'dbname' => 'cericar',
+	'user'	=> 'root',
+	'password' => '',
+	'host'	=> 'localhost',
 	'driver' => 'pdo_pgsql');
 	
 
