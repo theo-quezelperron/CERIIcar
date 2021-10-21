@@ -17,10 +17,10 @@ private function __construct(){
 	$config = Setup::createAnnotationMetadataConfiguration(array("../../monApplication/model/"), true);
 
 	$param = array(
-	'dbname' => 'cericar',
-	'user'	=> 'root',
-	'password' => '',
-	'host'	=> 'localhost',
+	'dbname' => DB,
+	'user'	=> USER,
+	'password' => PASS,
+	'host'	=> HOST,
 	'driver' => 'pdo_pgsql');
 	
 
