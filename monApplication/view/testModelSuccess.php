@@ -16,19 +16,19 @@
 
     echo "<br>";
     echo "<br>";
-    echo "ID : " . $voyage->id . "<br>";
-    echo "Nom conducteur : " . $voyage->conducteur->nom. "<br>";
-    echo "Départ Trajet : " . $voyage->trajet->depart . "<br>";
-    echo "Tarif : " . $voyage->tarif . "<br>";
-    echo "Nombre de places : " . $voyage->nbplace . "<br>";
-    echo "Heure de départ : " . $voyage->heuredepart . "<br>";
-    echo "Contraintes : " . $voyage->contraintes . "<br>";
+    echo "ID : " . $context->voyage->id . "<br>";
+    echo "Nom conducteur : " . $context->voyage->conducteur->nom. "<br>";
+    echo "Départ Trajet : " . $context->voyage->trajet->depart . "<br>";
+    echo "Tarif : " . $context->voyage->tarif . "<br>";
+    echo "Nombre de places : " . $context->voyage->nbplace . "<br>";
+    echo "Heure de départ : " . $context->voyage->heuredepart . "<br>";
+    echo "Contraintes : " . $context->voyage->contraintes . "<br>";
     echo "<br>";
 
     echo "<br>";
-    echo "ID : " . $reservation->id . "<br>";
-    echo "Départ voyage : " . $reservation->voyage->trajet->depart . "<br>";
-    echo "Nom voyageur : " . $reservation->voyageur->nom . "<br>";
+    echo "ID : " . $context->reservation->id . "<br>";
+    echo "Départ voyage : " . $context->reservation->voyage->trajet->depart . "<br>";
+    echo "Nom voyageur : " . $context->reservation->voyageur->nom . "<br>";
 
 
 ?>
