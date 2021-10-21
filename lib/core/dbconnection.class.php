@@ -1,6 +1,6 @@
 <?php
 
-define ('HOST', 'pedagoc.univ-avignon.fr') ;
+define ('HOST', 'pedago.univ-avignon.fr') ;
 define ('USER', 'uapv1801268'  ) ;
 define ('PASS', 'BP6qFPv6Ade2zE2' ) ;
 define ('DB', 'etd' ) ;
@@ -17,11 +17,11 @@ private function __construct(){
 	$config = Setup::createAnnotationMetadataConfiguration(array("../../monApplication/model/"), true);
 
 	$param = array(
-	'dbname' => 'cericar',
-	'user'	=> 'root',
-	'password' => '',
-	'host'	=> 'localhost',
-	'driver' => 'pdo_mysql');
+	'dbname' => 'etd',
+	'user'	=> 'uapv1801268',
+	'password' => 'BP6qFPv6Ade2zE2',
+	'host'	=> 'pedago.univ-avignon.fr',
+	'driver' => 'pdo_pgsql');
 	
 
 
