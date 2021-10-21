@@ -24,10 +24,10 @@ class mainController
 
 	public static function testModel($request, $context){
 		$context->user = utilisateurTable::getUserByLoginAndPass('Test','Password');
-        $context->trajet = trajetTable::getTrajet('Nancy','Amiens');
-        $context->voyages = voyageTable::getVoyagesByTrajet(383);
-        $context->reservations = reservationTable::getReservationByVoyage( 674 );
-        $context->userid = utilisateurTable::getUserByID('1');
+        $context->trajet = trajetTable::getTrajet('Marseille','Paris');
+        $context->voyages = voyageTable::getVoyagesByTrajet(1);
+        $context->reservations = reservationTable::getReservationByVoyage(1);
+        $context->userid = utilisateurTable::getUserByID(1);
         return context::SUCCESS;
 	}
 

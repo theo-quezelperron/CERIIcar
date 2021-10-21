@@ -1,5 +1,5 @@
 <?php
-// Inclusion de la classe utilisateur
+
 require_once "voyage.class.php";
 
 class voyageTable {

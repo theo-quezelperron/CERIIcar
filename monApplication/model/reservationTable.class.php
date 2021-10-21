@@ -1,6 +1,6 @@
 <?php
-// Inclusion de la classe utilisateur
-require_once "voyage.class.php";
+
+require_once "reservation.class.php";
 
 class reservationTable {
 
