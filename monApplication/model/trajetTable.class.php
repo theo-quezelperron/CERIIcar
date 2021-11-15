@@ -18,5 +18,24 @@ class trajetTable {
     
 	return $trajet; 
 	}
+
+
+	//méthode getAllVilles permetde récupérer sous la forme d'un tableaux l'intégralité des villes de départ et d'arrivée
+	public static function getAllVilles()
+	{
+	
+		$em = dbconnection::getInstance()->getEntityManager() ;
+  
+		$trajetRepository = $em->getRepository('trajet');
+		$trajet = $trajetRepository->findAll();	
+	  
+	  
+		if ($trajet == false){
+			echo 'Erreur sql';
+			}
+	  
+		return array("depart" => array_unique(array_column($trajet, 'depart')), "arrivee" => array_unique(array_column($trajet, 'arrivee')));
+
+	}
 }
 ?>
