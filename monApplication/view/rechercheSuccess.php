@@ -1,7 +1,4 @@
 <p>Test de foncitonnement de la page </p>
-<?php
-echo 'test';
-echo '
 <form action="" method="get" class="form-recherche">
   <div class="form-recherche">
     <label for="depart">ville de départ: </label>
@@ -12,8 +9,6 @@ echo '
     <input type="text" name="arrivee" id="arrivee" required>
   </div>
   <div class="form-recherche">
-    <button type="submit" action="echo(rechercheController::recherche2());" value="Recherché!">
+    <button type="submit" action="recherche2" value="Recherché!">GO!</button>
   </div>
-</form>';
-
-?>
+</form>;
