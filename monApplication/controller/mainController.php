@@ -38,6 +38,7 @@ class mainController
 
     public static function recherche2($request, $context){
         $context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
+		$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
         return context::SUCCESS;
     }
 
