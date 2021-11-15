@@ -1,5 +1,4 @@
 <?php
-
     
     echo "ID : " . $context->user->id . "<br>";
     echo "Identifiant : " . $context->user->identifiant . "<br>";
