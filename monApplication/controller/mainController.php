@@ -32,13 +32,15 @@ class mainController
 	}
 
 	public static function recherche($request, $context){
-        
-        return context::SUCCESS;
-    }
-
-    public static function recherche2($request, $context){
-        $context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-		$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+        if (isset($_GET['depart']) && isset($_GET['arrivee'])){
+			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
+			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+			$context->req = 1; 
+		}
+		else {
+			$context->req = null;
+		}
+		$context->villes = trajetTable::getAllVilles();
         return context::SUCCESS;
     }
 
