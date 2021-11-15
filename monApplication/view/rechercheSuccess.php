@@ -1,4 +1,4 @@
-<p>Test de foncitonnement de la page </p>
+<!-- Partie formulaire -->
 <form action="" method="get" class="form-recherche">
   <div class="form-recherche">
     <input type="hidden" name="action" value="recherche" required>
@@ -23,7 +23,10 @@
     <button type="submit" value="Recherché!">GO!</button>
   </div>
 </form>;
+
+<!-- Partie affichage -->
 <?php 
+//Le code ne s'exécute qu'a la condition que le formulaire ai été submit.
 if ($context->req != null){
 echo'
 <table>
