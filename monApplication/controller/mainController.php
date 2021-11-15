@@ -42,6 +42,7 @@ class mainController
 		else {
 			$context->req = null;
 		}
+		$context->title = "Recherchez votre voyage !";
 		//Fonction permettant de peupler les select fields
 		$context->villes = trajetTable::getAllVilles();
         return context::SUCCESS;
