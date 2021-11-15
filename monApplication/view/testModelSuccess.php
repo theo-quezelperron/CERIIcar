@@ -31,7 +31,7 @@
 	foreach ($context->reservations as $reservation){
     echo "<br>";
     echo "ID : " . $reservation->id . "<br>";
-    echo "Départ voyage : " . $reservation->voyages->trajet->depart . "<br>";
+    echo "Départ voyage : " . $reservation->voyage->trajet->depart . "<br>";
     echo "Nom voyageur : " . $reservation->voyageur->nom . "<br>";
 }
 
