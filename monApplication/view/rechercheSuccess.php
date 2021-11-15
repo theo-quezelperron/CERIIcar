@@ -1,4 +1,6 @@
+<p>Test de foncitonnement de la page </p>
 <?php
+echo 'test';
 echo '
 <form action="" method="get" class="form-recherche">
   <div class="form-recherche">
