@@ -13,7 +13,7 @@ class trajetTable {
 	
     
 	if ($trajet == false){
-		echo 'Erreur sql';
+		//echo 'Erreur sql';
 			   }
     
 	return $trajet; 
@@ -31,7 +31,7 @@ class trajetTable {
 	  
 	  
 		if ($trajet == false){
-			echo 'Erreur sql';
+			//echo 'Erreur sql';
 			}
 	  
 		return array("depart" => array_unique(array_column($trajet, 'depart')), "arrivee" => array_unique(array_column($trajet, 'arrivee')));

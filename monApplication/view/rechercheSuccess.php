@@ -33,7 +33,23 @@ $("#btn_1").click(function(){
     method: "GET",
     success: function(result){
       $("#htmlResult").html(result);
-      //alert("Requête effectuée!")
+      document.getElementById('bandeau_failure').remove();
+      document.getElementById("bandeau_success").style.visibility = "visible";
+      setTimeout(function(){
+        document.getElementById("bandeau_success").style.visibility = "hidden";// or fade, css display however you'd like.
+        document.getElementById('bandeau_success').remove();
+      }, 5000);
+      
+    },
+    error: function(result){
+      $("#htmlResult").html(result);
+      document.getElementById('bandeau_success').remove();
+      document.getElementById("bandeau_failure").style.visibility = "visible";
+      setTimeout(function(){
+        document.getElementById("bandeau_failure").style.visibility = "hidden";// or fade, css display however you'd like.
+        document.getElementById('bandeau_failure').remove();
+      }, 5000);
+      
     }
   })
   console.log(test);

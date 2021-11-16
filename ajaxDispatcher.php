@@ -29,6 +29,7 @@ if($view===false)
 //inclusion du layout qui va lui meme inclure le template view
 elseif($view!=context::NONE)
 {
+	include($nameApp."/view/bandeau.php");
 	include($nameApp."/view/".$action.$view.".php");
 }
 
