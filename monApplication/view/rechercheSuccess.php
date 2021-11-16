@@ -27,7 +27,7 @@
 <div id="htmlResult"></div>
 <script>
 $("#btn_1").click(function(){
-  let urlString = "http://ceriicar/ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() 
+  let urlString = "ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() 
   let test = $.ajax({
     url: urlString,
     method: "GET",
