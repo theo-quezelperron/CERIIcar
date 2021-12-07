@@ -45,7 +45,8 @@ class mainController
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
 			$context->alerts = [];
-			switch (count($context->voyages)){
+			$i = count($context->voyages);
+			switch ($i){
 				case null:
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 					break;
