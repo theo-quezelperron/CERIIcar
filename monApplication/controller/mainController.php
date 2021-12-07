@@ -44,15 +44,15 @@ class mainController
         if (isset($_GET['depart']) && isset($_GET['arrivee'])){
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
-			$i = count($context->voyages);
-			switch ($i){
+			printf(count($context->voyages));
+			switch (count($context->voyages)){
 				case null:
 					$context->info["Alerte"] = "Erreur rencontré avec la requête!";
 					break;
 				case 0:
 					$context->info["Warning"] = "Aucun voyage disponible sur ce trajet!";
 					break;
-				case 2:
+				default:
 					$context->info["Réussite"] = count($context->voyages) . "voyages disponibles!";
 					break;
 			}
