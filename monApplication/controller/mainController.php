@@ -52,7 +52,7 @@ class mainController
 				case 0:
 					$context->info["Warning"] = "Aucun voyage disponible sur ce trajet!";
 					break;
-				case $i > 0:
+				case 2:
 					$context->info["Réussite"] = count($context->voyages) . "voyages disponibles!";
 					break;
 			}
