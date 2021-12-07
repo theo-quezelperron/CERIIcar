@@ -34,7 +34,6 @@ $("#btn_1").click(function(){
     success: function(result){
       $("#htmlResult").html(result);
       console.log(result);
-      document.getElementsByClassName("alert").addClass("alert-primary");
       document.getElementsByClassName("alert")[0].style.visibility = "visible";
       setTimeout(function(){
         document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
