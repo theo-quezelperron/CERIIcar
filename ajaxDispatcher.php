@@ -29,6 +29,12 @@ if($view===false)
 //inclusion du layout qui va lui meme inclure le template view
 elseif($view!=context::NONE)
 {
+    $context->alerts = [];
+    if ($context->info != null){
+        foreach($context->info as $key => $value){
+            $context->alerts[$key] = $value;
+        }
+    }
 	include($nameApp."/view/bandeau.php");
 	include($nameApp."/view/".$action.$view.".php");
 }

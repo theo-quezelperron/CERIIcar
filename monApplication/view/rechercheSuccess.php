@@ -33,21 +33,19 @@ $("#btn_1").click(function(){
     method: "GET",
     success: function(result){
       $("#htmlResult").html(result);
-      document.getElementById('bandeau_failure').remove();
-      document.getElementById("bandeau_success").style.visibility = "visible";
+      document.getElementsByClassName("alert")[0].style.visibility = "visible";
       setTimeout(function(){
-        document.getElementById("bandeau_success").style.visibility = "hidden";// or fade, css display however you'd like.
-        document.getElementById('bandeau_success').remove();
+        document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
+        document.getElementsByClassName("alert")[0].remove();
       }, 5000);
       
     },
     error: function(result){
       $("#htmlResult").html(result);
-      document.getElementById('bandeau_success').remove();
-      document.getElementById("bandeau_failure").style.visibility = "visible";
+      document.getElementsByClassName("alert")[0].style.visibility = "visible";
       setTimeout(function(){
-        document.getElementById("bandeau_failure").style.visibility = "hidden";// or fade, css display however you'd like.
-        document.getElementById('bandeau_failure').remove();
+        document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
+        document.getElementsByClassName("alert")[0].remove();
       }, 5000);
       
     }
