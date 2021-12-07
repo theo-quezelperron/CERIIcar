@@ -44,7 +44,7 @@ class mainController
         if (isset($_GET['depart']) && isset($_GET['arrivee'])){
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
-			printf(count($context->voyages));
+			echo(count($context->voyages));
 			switch (count($context->voyages)){
 				case null:
 					$context->info["Alerte"] = "Erreur rencontré avec la requête!";
