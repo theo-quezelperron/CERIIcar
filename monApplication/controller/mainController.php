@@ -34,18 +34,30 @@ class mainController
 	//Exo séance 3:
 	//Méthode du controller permettant la recherche de voyage en prenant comme argument une ville de départ et une ville d'arrivée
 	public static function recherche($request, $context){
-        if (isset($_GET['depart']) && isset($_GET['arrivee'])){
-			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
-			$context->req = 1; 
-		}
-		else {
-			$context->req = null;
-		}
 		$context->title = "Recherchez votre voyage !";
 		//Fonction permettant de peupler les select fields
 		$context->villes = trajetTable::getAllVilles();
         return context::SUCCESS;
     }
 
+	public static function tableau($request, $context){
+        if (isset($_GET['depart']) && isset($_GET['arrivee'])){
+			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
+			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+			$context->alerts = [];
+			$i = count($context->voyages);
+			switch ($i){
+				case null:
+					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+					break;
+				case 0:
+					$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+					break;
+				default:
+					$context->alerts["Réussite"] = count($context->voyages) . " voyages disponibles!";
+					break;
+			}
+		}
+		return context::SUCCESS;
+	}
 }

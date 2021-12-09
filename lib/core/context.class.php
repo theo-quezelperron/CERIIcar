@@ -68,12 +68,13 @@ class context
     
 	
 	
-	public function __get($prop)
+	public function &__get($prop)
     	{
 		if(array_key_exists($prop, $this->data))        	
 			return $this->data[$prop];
 		else
-			return NULL;      
+			$ret = null;
+			return $ret;      
     	}
     
    	public function __set($prop,$value) 
