@@ -1,6 +1,7 @@
 
 
 $("#btn_1").click(function(){
+    console.log("clique");
     let urlString = "ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() 
     let test = $.ajax({
       url: urlString,
