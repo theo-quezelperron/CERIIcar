@@ -21,7 +21,9 @@
         	<?php echo " $context->error !!!!!" ?>
       	</div>
       <?php endif; ?>
-      <?php include($nameApp."/view/bandeau.php"); ?>
+      <?php if(isset($context->alerts)):
+        include($nameApp."/view/bandeau.php"); 
+      endif; ?>
       <div id="page_maincontent">	
       	<?php 
         include($template_view);

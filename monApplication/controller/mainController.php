@@ -54,7 +54,7 @@ class mainController
 					$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
 					break;
 				default:
-					$context->alerts["Réussite"] = count($context->voyages) . "voyages disponibles!";
+					$context->alerts["Réussite"] = count($context->voyages) . " voyages disponibles!";
 					break;
 			}
 		}
