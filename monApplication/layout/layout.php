@@ -23,7 +23,9 @@
       <?php endif; ?>
       <?php include($nameApp."/view/bandeau.php"); ?>
       <div id="page_maincontent">	
-      	<?php include($template_view); ?>
+      	<?php 
+        include($template_view);
+        include($nameApp."/view/bandeau.php"); ?>
       </div>
     </div>
     <script src="js/app.js"></script>
