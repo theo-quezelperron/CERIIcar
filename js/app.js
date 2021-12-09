@@ -9,7 +9,7 @@ $("#btn_1").on("click", function(){
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
-          document.getElementsByClassName("alert")[0].remove();
+          //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
       },
@@ -18,7 +18,7 @@ $("#btn_1").on("click", function(){
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
-          document.getElementsByClassName("alert")[0].remove();
+          //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
       }
