@@ -36,7 +36,6 @@ elseif($view!=context::NONE)
         }
     }
     var_dump($context->alerts);
-    include($nameApp."/view/bandeau.php");
 	include($nameApp."/view/".$action.$view.".php");
 }
 
