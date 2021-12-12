@@ -30,12 +30,8 @@ if($view===false)
 elseif($view!=context::NONE)
 {
     //$context->alerts = [];
-    if ($context->info != null){
-        foreach($context->info as $key => $value){
-            $context->alerts[$key] = $value;
-        }
-    }
     //var_dump($context->alerts);
+    include($nameApp."/view/bandeau.php");
 	include($nameApp."/view/".$action.$view.".php");
 }
 
