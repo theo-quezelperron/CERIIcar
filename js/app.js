@@ -8,7 +8,7 @@ $("#btn_1").on("click", function(){
       contentType: false,
       success: function(result){
         let parsed_content = JSON.parse(result);
-        console.log(parsed_content.bandeau);
+        $("#htmlResult").html(parsed_content.corps);
         switch (parsed_content.bandeau.class) {
           case "Alerte":
             $("#bandeau").removeClass();
@@ -29,7 +29,7 @@ $("#btn_1").on("click", function(){
         }
         $("#bandeau").html(parsed_content.bandeau.value);
         $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
-            
+         
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
