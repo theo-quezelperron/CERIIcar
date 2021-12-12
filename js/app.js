@@ -14,25 +14,29 @@ $("#btn_1").on("click", function(){
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-danger");
-            $("#bandeau").html(parsed_content.bandeau.value);
+            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Warning":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-warning");
-            $("#bandeau").html(parsed_content.bandeau.value);
+            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Réussite":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-success");
-            $("#bandeau").html(parsed_content.bandeau.value);
+            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           default :
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-primary");
-            $("#bandeau").html(parsed_content.bandeau.value);
+            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $(".closebtn").html(parsed_content.bandeau.value);
             break;
         }
         $("#htmlResult").html(parsed_content.corps);
