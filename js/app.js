@@ -14,28 +14,28 @@ $("#btn_1").on("click", function(){
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-danger");
-            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
             $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Warning":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-warning");
-            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
             $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Réussite":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-success");
-            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
             $(".closebtn").html(parsed_content.bandeau.value);
             break;
           default :
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-primary");
-            $("#bandeau").append('<span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display=\"none\";">&times;</span>');
             $(".closebtn").html(parsed_content.bandeau.value);
             break;
         }
