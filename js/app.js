@@ -35,7 +35,6 @@ $("#btn_1").on("click", function(){
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-          document.getElementsByClassName("closebtn")[0].style.display = "none";
           //document.getElementsByClassName("alert")[0].remove();
         }, 10000);
         
@@ -43,10 +42,8 @@ $("#btn_1").on("click", function(){
       error: function(result){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.display = "block";
-        document.getElementsByClassName("closebtn")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-          document.getElementsByClassName("closebtn")[0].style.display = "none";
           //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
