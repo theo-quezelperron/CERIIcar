@@ -47,7 +47,7 @@ elseif($view!=context::NONE)
             'value' => $context->alerts[array_key_first($context->alerts)]
         ];
         }
-    $response_array['corps'] = eval($nameApp."/view/".$action.$view.".php");
+    $response_array['corps'] = eval("$>$nameApp./view/.$action.$view..php");
     echo json_encode($response_array);
 }
 
