@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <?php echo '<div class="container"><h2 >' . $context->title . '</h2></div>'?>
+    <?php echo '<div class="container"><h2>' . $context->title . '</h2></div>'?>
 
     <div id="page">
       <?php if($context->error): ?>
@@ -27,7 +27,7 @@
       <div id="page_maincontent">	
       	<?php 
         include($template_view);
-        include($nameApp."/view/bandeau.php"); ?>
+         ?>
       </div>
     </div>
     <script src="js/app.js"></script>
