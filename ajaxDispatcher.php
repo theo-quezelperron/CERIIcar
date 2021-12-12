@@ -34,8 +34,11 @@ elseif($view!=context::NONE)
     // include($nameApp."/view/bandeau.php");
 	// include($nameApp."/view/".$action.$view.".php");
     $response_array = [];
-    $response_array['bandeau'] = file_get_contents($nameApp."/view/".$action.$view.".php");
-    $response_array['corps'] = file_get_contents($nameApp."/view/bandeau.php");
+    if($context->alerts){
+        $response_array['bandeau'] = ['class', array_key_first($context->alerts)];
+        array_push($response_array['bandeau'], ['value', $context->alerts[array_key_first($context->alerts)]]); 
+    }
+    $response_array['corps'] = file_get_contents($nameApp."/view/".$action.$view.".php");
     echo json_encode($response_array);
 }
 
