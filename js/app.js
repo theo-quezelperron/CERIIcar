@@ -28,14 +28,11 @@ $("#btn_1").on("click", function(){
             break;
         }
         $("#bandeau").html(parsed_content.bandeau.value);
-        //$("#bandeau").append('<span class="closebtn" style="display: inline; align: right;" onclick="this.parentElement.style.display=\'none\';">&times;</span>');
         $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
             
-        //$("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-          //document.getElementsByClassName("alert")[0].remove();
         }, 10000);
         
       },
@@ -44,8 +41,8 @@ $("#btn_1").on("click", function(){
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-          //document.getElementsByClassName("alert")[0].remove();
-        }, 5000);
+
+        }, 10000);
         
       }
     })
