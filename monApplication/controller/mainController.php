@@ -60,7 +60,7 @@ class mainController
 				}
 			}
 			else {
-				
+				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 			}
 		}
 		return context::SUCCESS;
