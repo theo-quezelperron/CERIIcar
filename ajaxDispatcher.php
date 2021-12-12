@@ -33,9 +33,9 @@ elseif($view!=context::NONE)
     //var_dump($context->alerts);
     // include($nameApp."/view/bandeau.php");
 	// include($nameApp."/view/".$action.$view.".php");
-    $response_array = array();
-    array_push($response_array, include($nameApp."/view/".$action.$view.".php"));
-    array_push($response_array, include($nameApp."/view/bandeau.php"));
+    $response_array = [];
+    $response_array[0] = include($nameApp."/view/".$action.$view.".php");
+    $response_array[1] = include($nameApp."/view/bandeau.php");
     var_dump($response_array);
     echo json_encode($response_array);
 }
