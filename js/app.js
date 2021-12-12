@@ -14,32 +14,27 @@ $("#btn_1").on("click", function(){
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-danger");
-            $("#bandeau").html('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
-            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Warning":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-warning");
-            $("#bandeau").html('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
-            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           case "Réussite":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-success");
-            $("#bandeau").html('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
-            $(".closebtn").html(parsed_content.bandeau.value);
             break;
           default :
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-primary");
-            $("#bandeau").html('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display=\"none\";">&times;</span>');
-            $(".closebtn").html(parsed_content.bandeau.value);
             break;
         }
-        $("#htmlResult").html(parsed_content.corps);
+        $("#bandeau").html(parsed_content.bandeau.value);
+        $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display="none";">&times;</span>');
+            
+        //$("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
         document.getElementsByClassName("closebtn")[0].style.display = "block";
         setTimeout(function(){
