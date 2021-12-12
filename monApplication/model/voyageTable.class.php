@@ -12,7 +12,7 @@ class voyageTable {
 	$voyage = $voyageRepository->findBy(array('trajet' => $trajet ));	
 	
     if ($voyage == false){
-		//echo 'Erreur sql';
+		echo 'Erreur sql';
 			   }
     
 	return $voyage; 
