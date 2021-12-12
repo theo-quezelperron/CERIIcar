@@ -6,7 +6,9 @@ $("#btn_1").on("click", function(){
       success: function(result, textStatus, request){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
-        alert(request.getResponseHeader('some_header'));
+        console.log(request);
+        console.log(textStatus);
+        console.log(result);
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
@@ -16,7 +18,6 @@ $("#btn_1").on("click", function(){
       error: function(result, textStatus, request){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
-        alert(request.getResponseHeader('some_header'));
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
