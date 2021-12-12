@@ -37,7 +37,8 @@ $("#btn_1").on("click", function(){
         
       },
       error: function(result){
-        $("#htmlResult").html(result);
+        let parsed_content = JSON.parse(result);
+        $("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
