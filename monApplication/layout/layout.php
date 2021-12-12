@@ -21,12 +21,13 @@
         	<?php echo " $context->error !!!!!" ?>
       	</div>
       <?php endif; ?>
-      <?php if(isset($context->alerts)):
-        var_dump($context->alerts);
+      
+      <?php if(isset($context->alerts)):  
         include($nameApp."/view/bandeau.php"); 
       endif; ?>
       <div id="page_maincontent">	
       	<?php 
+        var_dump($context);
         //include($nameApp."/view/bandeau.php"); 
         include($template_view);
         ?>
