@@ -61,7 +61,7 @@ class mainController
 			}
 			
 		}
-		//var_dump($context->alerts);
+		var_dump($context->voyages);
 		return context::SUCCESS;
 	}
 }
