@@ -4,6 +4,8 @@ $("#btn_1").on("click", function(){
     let test = $.ajax({
       url: urlString,
       method: "GET",
+      processData: false,
+      contentType: false,
       success: function(result){
         console.log(result);
         $("#htmlResult").html(result);
