@@ -24,6 +24,6 @@
 //     echo '<div id="bandeau" class="alert alert-danger" role="alert" style="visibility: hidden">ERREUR!</div>';
 // }
 
-echo '<div id="bandeau" class="alert " role="alert" style="display: block"><span class="closebtn" onclick="this.parentElement.style.display="none";">&times;</span></div>';
+echo '<div id="bandeau" class="alert " role="alert" style="display: block"><span class="closebtn" style="display: none;" onclick="this.parentElement.style.display="none";">&times;</span></div>';
 
 ?>
