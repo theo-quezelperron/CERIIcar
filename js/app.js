@@ -9,7 +9,7 @@ $("#btn_1").on("click", function(){
       success: function(result){
         let parsed_content = JSON.parse(result);
         console.log(parsed_content.bandeau);
-        $("#htmlResult").html(result);
+        $("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
