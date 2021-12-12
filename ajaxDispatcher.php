@@ -36,7 +36,7 @@ elseif($view!=context::NONE)
     $response_array = array();
     array_push($response_array, $nameApp."/view/".$action.$view.".php");
     array_push($response_array, $nameApp."/view/bandeau.php");
-   return $response_array;
+    echo json_encode($response_array);
 }
 
 ?>
