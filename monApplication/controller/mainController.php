@@ -48,9 +48,6 @@ class mainController
 			if (isset($context->voyages)) {
 				$i = count($context->voyages);
 				switch ($i){
-					case null:
-						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-						break;
 					case 0:
 						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
 						break;
