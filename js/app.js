@@ -8,7 +8,7 @@ $("#btn_1").on("click", function(){
       contentType: false,
       success: function(result){
         let parsed_content = JSON.parse(result);
-        console.log(parsed_content);
+        console.log(parsed_content.bandeau);
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
