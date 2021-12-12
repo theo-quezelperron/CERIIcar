@@ -12,19 +12,19 @@ $("#btn_1").on("click", function(){
         switch (parsed_content.bandeau.class) {
           case "Alerte":
             $("#bandeau").removeClass();
-            $("#bandeau").addClass("alert alert-danger");
+            $("#bandeau").addClass("alert alert-danger fade show");
             break;
           case "Warning":
             $("#bandeau").removeClass();
-            $("#bandeau").addClass("alert alert-warning");
+            $("#bandeau").addClass("alert alert-warning fade show");
             break;
           case "Réussite":
             $("#bandeau").removeClass();
-            $("#bandeau").addClass("alert alert-success");
+            $("#bandeau").addClass("alert alert-success fade show");
             break;
           default :
             $("#bandeau").removeClass();
-            $("#bandeau").addClass("alert alert-primary");
+            $("#bandeau").addClass("alert alert-primary fade show");
             break;
         }
         $("#bandeau").html(parsed_content.bandeau.value);
