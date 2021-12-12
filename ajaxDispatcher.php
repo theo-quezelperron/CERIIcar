@@ -36,7 +36,7 @@ elseif($view!=context::NONE)
     }
     
 	include($nameApp."/view/".$action.$view.".php");
-    include($nameApp."/layout/".$context->getLayout().".php");
+    
 }
 
 ?>
