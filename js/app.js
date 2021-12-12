@@ -9,6 +9,24 @@ $("#btn_1").on("click", function(){
       success: function(result){
         let parsed_content = JSON.parse(result);
         console.log(parsed_content.bandeau);
+        switch (parsed_content.bandeau.class) {
+          case "Alerte":
+            $("#bandeau").addClass("alert-danger");
+            $("#bandeau").html(parsed_content.bandeau.value);
+            break;
+          case "Warning":
+            $("#bandeau").addClass("alert-warning");
+            $("#bandeau").html(parsed_content.bandeau.value);
+            break;
+          case "Réussite":
+            $("#bandeau").addClass("alert-success");
+            $("#bandeau").html(parsed_content.bandeau.value);
+            break;
+          default :
+            $("#bandeau").addClass("alert-primary");
+            $("#bandeau").html(parsed_content.bandeau.value);
+            break;
+        }
         $("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
