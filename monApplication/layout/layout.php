@@ -21,12 +21,10 @@
         	<?php echo " $context->error !!!!!" ?>
       	</div>
       <?php endif; ?>
-      <?php if(isset($context->alerts)):
-        include($nameApp."/view/bandeau.php"); 
-      endif; ?>
       <div id="page_maincontent">	
       	<?php 
         include($template_view);
+        include($nameApp."/view/bandeau.php");
          ?>
       </div>
     </div>
