@@ -23,7 +23,6 @@ $("#btn_1").on("click", function(){
         
       }
     })
-    console.log(test);
     
   });
   // }).done(function(response){
