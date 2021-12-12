@@ -32,7 +32,7 @@ $("#btn_1").on("click", function(){
             break;
         }
         $("#bandeau").html(parsed_content.bandeau.value);
-        $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display=\"none\";">&times;</span>');
+        $("#bandeau").append('<span class="closebtn" style="display: block;" onclick="this.parentElement.style.display= \'none;\'">&times;</span>');
             
         //$("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
