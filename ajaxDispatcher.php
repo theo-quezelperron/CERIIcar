@@ -34,6 +34,14 @@ elseif($view!=context::NONE)
     // include($nameApp."/view/bandeau.php");
 	// include($nameApp."/view/".$action.$view.".php");
     $response_array = [];
+    if (!function_exists('array_key_first')) {
+        function array_key_first(array $arr) {
+            foreach($arr as $key => $unused) {
+                return $key;
+            }
+            return NULL;
+        }
+    }
     if($context->alerts){
         $response_array['bandeau'] = ['class', array_key_first($context->alerts)];
         array_push($response_array['bandeau'], ['value', $context->alerts[array_key_first($context->alerts)]]); 
