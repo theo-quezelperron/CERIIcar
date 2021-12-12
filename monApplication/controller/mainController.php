@@ -45,18 +45,24 @@ class mainController
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
 			$context->alerts = [];
-			$i = count($context->voyages);
-			switch ($i){
-				case null:
-					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-					break;
-				case 0:
-					$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
-					break;
-				default:
-					$context->alerts["Réussite"] = count($context->voyages) . " voyages disponibles!";
-					break;
+			if (isset($context->voyages)) {
+				$i = count($context->voyages);
+				switch ($i){
+					case null:
+						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+						break;
+					case 0:
+						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+						break;
+					default:
+						$context->alerts["Réussite"] = count($context->voyages) . " voyages disponibles!";
+						break;
+				}
 			}
+			else {
+				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+			}
+			
 		}
 		return context::SUCCESS;
 	}
