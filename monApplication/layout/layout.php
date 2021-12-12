@@ -27,7 +27,7 @@
       endif; ?>
       <div id="page_maincontent">	
       	<?php 
-        //include($nameApp."/view/bandeau.php"); 
+        include($nameApp."/view/bandeau.php"); 
         include($template_view);
         ?>
       </div>
