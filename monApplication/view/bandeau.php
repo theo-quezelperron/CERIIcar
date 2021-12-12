@@ -24,6 +24,6 @@
 //     echo '<div id="bandeau" class="alert alert-danger" role="alert" style="visibility: hidden">ERREUR!</div>';
 // }
 
-echo '<div id="bandeau" class="alert " role="alert" style="visibility: hidden"></div>';
+echo '<div id="bandeau" class="alert " role="alert" style="visibility: none"></div>';
 
 ?>
