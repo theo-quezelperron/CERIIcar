@@ -35,7 +35,7 @@ elseif($view!=context::NONE)
             $context->alerts[$key] = $value;
         }
     }
-    var_dump($context->alerts);
+    //var_dump($context->alerts);
 	include($nameApp."/view/".$action.$view.".php");
 }
 
