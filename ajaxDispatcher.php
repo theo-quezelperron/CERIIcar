@@ -47,7 +47,10 @@ elseif($view!=context::NONE)
             'value' => $context->alerts[array_key_first($context->alerts)]
         ];
         }
-    $response_array['corps'] = eval("?>CERIICAR/view/tableauSuccess.php");
+    ob_start();
+    include($nameApp."/view/".$action.$view.".php");
+    $response_array['corps'] = ob_get_contents();
+    ob_clean();
     echo json_encode($response_array);
 }
 
