@@ -5,6 +5,7 @@ $("#btn_1").on("click", function(){
       url: urlString,
       method: "GET",
       success: function(result){
+        console.log(result);
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){

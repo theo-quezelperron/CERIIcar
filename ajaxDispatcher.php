@@ -31,8 +31,12 @@ elseif($view!=context::NONE)
 {
     //$context->alerts = [];
     //var_dump($context->alerts);
-    include($nameApp."/view/bandeau.php");
-	include($nameApp."/view/".$action.$view.".php");
+    // include($nameApp."/view/bandeau.php");
+	// include($nameApp."/view/".$action.$view.".php");
+    $response_array = [];
+    $response_array[0] = include($nameApp."/view/".$action.$view.".php");
+    $response_array[1] = include($nameApp."/view/bandeau.php");
+    echo json_encode($response_array);
 }
 
 ?>
