@@ -45,7 +45,7 @@ class mainController
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
 			$context->alerts = [];
-			if (!isset($context->voyages)) {
+			if (isset($context->voyages)) {
 				$i = count($context->voyages);
 				switch ($i){
 					case 0:
@@ -61,7 +61,7 @@ class mainController
 			}
 			
 		}
-		//var_dump($context->voyages);
+		//var_dump($context->alerts);
 		return context::SUCCESS;
 	}
 }
