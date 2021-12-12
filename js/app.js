@@ -36,16 +36,16 @@ $("#btn_1").on("click", function(){
             break;
         }
         $("#htmlResult").html(parsed_content.corps);
-        document.getElementsByClassName("alert")[0].style.visibility = "visible";
+        document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
-          document.getElementsByClassName("alert")[0].style.visibility = "none";// or fade, css display however you'd like.
+          document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
       },
       error: function(result){
         $("#htmlResult").html(result);
-        document.getElementsByClassName("alert")[0].style.visibility = "visible";
+        document.getElementsByClassName("alert")[0].style.visibility = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "none";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
