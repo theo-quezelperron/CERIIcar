@@ -36,7 +36,6 @@ elseif($view!=context::NONE)
     $response_array = [];
     $response_array['bandeau'] = file_get_contents($nameApp."/view/".$action.$view.".php");
     $response_array['corps'] = file_get_contents($nameApp."/view/bandeau.php");
-    var_dump($response_array);
     echo json_encode($response_array);
 }
 
