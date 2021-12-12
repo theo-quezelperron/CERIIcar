@@ -34,8 +34,9 @@ elseif($view!=context::NONE)
             $context->alerts[$key] = $value;
         }
     }
-    include($nameApp."/view/bandeau.php");
+    
 	include($nameApp."/view/".$action.$view.".php");
+    include($nameApp."/layout/".$context->getLayout().".php");
 }
 
 ?>
