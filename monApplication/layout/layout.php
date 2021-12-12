@@ -22,6 +22,7 @@
       	</div>
       <?php endif; ?>
       <?php if(isset($context->alerts)):
+        var_dump($context->alerts);
         include($nameApp."/view/bandeau.php"); 
       endif; ?>
       <div id="page_maincontent">	
