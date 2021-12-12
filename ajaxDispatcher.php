@@ -30,7 +30,7 @@ if($view===false)
 elseif($view!=context::NONE)
 {
     //$context->alerts = [];
-    //var_dump($context->alerts);
+    var_dump($context->alerts);
     // include($nameApp."/view/bandeau.php");
 	// include($nameApp."/view/".$action.$view.".php");
     $response_array = [];
