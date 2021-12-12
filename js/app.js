@@ -32,7 +32,7 @@ $("#btn_1").on("click", function(){
             break;
         }
         $("#bandeau").html(parsed_content.bandeau.value);
-        $("#bandeau").append('<span class="closebtn" style="display: inline;" onclick="this.parentElement.style.display=\'none\';">&times;</span>');
+        $("#bandeau").append('<span class="closebtn" style="display: inline; align: right;" onclick="this.parentElement.style.display=\'none\';">&times;</span>');
             
         //$("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
@@ -40,7 +40,7 @@ $("#btn_1").on("click", function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
           document.getElementsByClassName("closebtn")[0].style.display = "none";
           //document.getElementsByClassName("alert")[0].remove();
-        }, 5000);
+        }, 10000);
         
       },
       error: function(result){
