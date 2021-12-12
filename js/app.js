@@ -29,7 +29,7 @@ $("#btn_1").on("click", function(){
             $("#bandeau").html(parsed_content.bandeau.value);
             break;
           default :
-          $("#bandeau").removeClass();
+            $("#bandeau").removeClass();
             $("#bandeau").addClass("alert");
             $("#bandeau").addClass("alert-primary");
             $("#bandeau").html(parsed_content.bandeau.value);
@@ -38,7 +38,7 @@ $("#btn_1").on("click", function(){
         $("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
-          document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
+          document.getElementsByClassName("alert")[0].style.visibility = "none";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
@@ -47,7 +47,7 @@ $("#btn_1").on("click", function(){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
         setTimeout(function(){
-          document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
+          document.getElementsByClassName("alert")[0].style.visibility = "none";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
