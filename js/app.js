@@ -3,18 +3,20 @@ $("#btn_1").on("click", function(){
     let test = $.ajax({
       url: urlString,
       method: "GET",
-      success: function(result){
+      success: function(result, textStatus, request){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
+        alert(request.getResponseHeader('some_header'));
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
         }, 5000);
         
       },
-      error: function(result){
+      error: function(result, textStatus, request){
         $("#htmlResult").html(result);
         document.getElementsByClassName("alert")[0].style.visibility = "visible";
+        alert(request.getResponseHeader('some_header'));
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.visibility = "hidden";// or fade, css display however you'd like.
           //document.getElementsByClassName("alert")[0].remove();
