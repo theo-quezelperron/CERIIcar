@@ -20,7 +20,7 @@ echo'
     foreach( $context->correspondance as $data ): ?>
     <tr>
     <th scope="row">1</th>
-      <td><?php echo $data->vdep; ?></td>
+      <td><?php echo $data["vdep"]; ?></td>
       <td><?php echo $data->varr; ?></td>
       <td><?php echo $data->distance; ?></td>
       <td><?php echo $data->nbplace; ?></td>
