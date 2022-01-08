@@ -41,28 +41,57 @@ class mainController
     }
 
 	public static function tableau($request, $context){
-        if (isset($_GET['depart']) && isset($_GET['arrivee'])){
-			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
-			$context->alerts = [];
-			if(!is_null($context->voyages)){
-				$i = count($context->voyages);
-				switch ($i){
-					case null:
-						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-						break;
-					case 0:
-						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
-						break;
-					default:
-						$context->alerts["Réussite"] = count($context->voyages) > 1 ? count($context->voyages) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
-						break;
-				}
+        if (isset($_GET['depart']) && isset($_GET['arrivee']) && isset($_GET['nbplace'])){
+			$corres = 999;
+            if(!isset($_POST['corres']))
+            {
+                $corres = 1;
+            }
+
+			// $context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
+			// $context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+			// $context->alerts = [];
+			// if(!is_null($context->voyages)){
+			// 	$i = count($context->voyages);
+			// 	switch ($i){
+			// 		case null:
+			// 			$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+			// 			break;
+			// 		case 0:
+			// 			$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+			// 			break;
+			// 		default:
+			// 			$context->alerts["Réussite"] = count($context->voyages) > 1 ? count($context->voyages) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
+			// 			break;
+			// 	}
+			// }
+			// else {
+			// 	$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+			// }
+		//}
+			$context->vDep  = $_POST['vDep'];
+			$context->vArr  = $_POST['vArr'];
+			$context->nbp   = $_POST['nbplace'];
+
+			$context->corres = voyageTable::getCorrespondances( $_POST['vDep'], $_POST['vArr'], $_POST['nbplace'], $corres );
+			$context->corres_info = voyageTable::getCorrespondancesInfo();
+
+			if( is_null( $context->corres ) )
+			{
+				$context->message = "Aucun trajet trouvé.";
+				return context::ERROR;
 			}
-			else {
-				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+
+			return context::SUCCESS;
 			}
-		}
-		return context::SUCCESS;
+			else
+			{
+			$context->vDep  = null; 
+			$context->vArr  = null; 
+			$context->nbp   = null; 
+
+			$context->message = "Il y a un problème.";
+			return context::ERROR;
+			}
 	}
 }
