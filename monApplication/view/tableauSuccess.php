@@ -16,7 +16,10 @@ echo'
     </thead>
     <tbody>
            ';
-           var_dump($context->info1);    
+           var_dump($context->info1);
+           echo '</br>';
+           var_dump($context->info2);
+           echo '</br>';    
     foreach( $context->correspondance as $data ): ?>
     <tr>
     <th scope="row">1</th>

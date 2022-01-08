@@ -60,6 +60,7 @@ class mainController
 			$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
 			$context->info1 = $context->correspondance;
 			$context->corres_info = voyageTable::getCorrespondancesInfo();
+			$context->info2 = $context->correspondance_info;
 			if(!is_null($context->correspondance)){
 				$i = count($context->correspondance);
 				switch ($i){
