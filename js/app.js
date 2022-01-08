@@ -7,7 +7,7 @@ $("#btn_1").on("click", function(){
       processData: false,
       contentType: false,
       success: function(result){
-        //let parsed_content = JSON.parse(result);
+        let parsed_content = JSON.parse(result);
         console.log(result);
         $("#htmlResult").html(parsed_content.corps);
         switch (parsed_content.bandeau.class) {
