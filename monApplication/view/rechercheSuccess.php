@@ -29,7 +29,7 @@
     </select>
   </div>
   <div class="mb-3 form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="corres">
+  <input class="form-check-input" type="checkbox" value="true" id="correspondance">
   <label class="form-check-label" for="flexCheckDefault">
     Correspondance
   </label>
