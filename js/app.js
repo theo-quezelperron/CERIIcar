@@ -8,7 +8,7 @@ $("#btn_1").on("click", function(){
       contentType: false,
       success: function(result){
         let parsed_content = JSON.parse(result);
-        console.log(parsed_content);
+        console.log(result);
         $("#htmlResult").html(parsed_content.corps);
         switch (parsed_content.bandeau.class) {
           case "Alerte":
