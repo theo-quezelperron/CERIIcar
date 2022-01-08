@@ -17,7 +17,7 @@ echo'
     </thead>
     <tbody>
            ';
-           var_dump($context->correspondance);    
+           var_dump($context->info1);    
     foreach( $context->correspondance as $data ): ?>
     <tr>
     <th scope="row">1</th>

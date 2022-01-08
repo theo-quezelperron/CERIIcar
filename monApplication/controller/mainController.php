@@ -43,7 +43,7 @@ class mainController
 	public static function tableau($request, $context){
         if (isset($_GET['depart']) && isset($_GET['arrivee']) && isset($_GET['nbplace'])){
 			$correspondance = 999;
-            if(!isset($_GET['correspondance']))
+            if($_GET['correspondance'] == "false")
             {
                 $correspondance = 1;
             }
@@ -58,6 +58,7 @@ class mainController
 			$context->nbp   = $_GET['nbplace'];
 
 			$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
+			$context->info1 = $context->correspondance;
 			$context->corres_info = voyageTable::getCorrespondancesInfo();
 			if(!is_null($context->correspondance)){
 				$i = count($context->correspondance);
