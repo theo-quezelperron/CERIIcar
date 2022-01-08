@@ -69,13 +69,13 @@ class mainController
 			// 	$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 			// }
 		//}
-			$context->vDep  = $_POST['vDep'];
-			$context->vArr  = $_POST['vArr'];
-			$context->nbp   = $_POST['nbplace'];
+			$context->vDep  = $_GET['depart'];
+			$context->vArr  = $_GET['arrivee'];
+			$context->nbp   = $_GET['nbplace'];
 
-			$context->corres = voyageTable::getCorrespondances( $_POST['vDep'], $_POST['vArr'], $_POST['nbplace'], $corres );
+			$context->corres = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $corres );
 			$context->corres_info = voyageTable::getCorrespondancesInfo();
-
+			var_dump($context->corres);
 			if( is_null( $context->corres ) )
 			{
 				$context->message = "Aucun trajet trouvé.";
