@@ -16,8 +16,9 @@ echo'
         </tr>
     </thead>
     <tbody>
-           ';    
-    foreach( $context->corres as $data ): ?>
+           ';
+           var_dump($context->correspondance);    
+    foreach( $context->correspondance as $data ): ?>
     <tr>
     <th scope="row">1</th>
       <td><?php echo $data->trajet->depart; ?></td>
