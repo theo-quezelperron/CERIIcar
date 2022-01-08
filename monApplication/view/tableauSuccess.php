@@ -21,13 +21,13 @@ echo'
     <tr>
     <th scope="row">1</th>
       <td><?php echo $data["vdep"]; ?></td>
-      <td><?php echo $data->varr; ?></td>
-      <td><?php echo $data->distance; ?></td>
-      <td><?php echo $data->nbplace; ?></td>
-      <td><?php echo $data->tarifpp; ?></td>
-      <td><?php echo $data->tarifg; ?></td>
-      <td><?php echo $data->hdep; ?></td>
-      <td><?php echo $data->harr; ?></td>
+      <td><?php echo $data["varr"]; ?></td>
+      <td><?php echo $data["distance"]; ?></td>
+      <td><?php echo $data["nbplace"]; ?></td>
+      <td><?php echo $data["tarifpp"]; ?></td>
+      <td><?php echo $data["tarifg"]; ?></td>
+      <td><?php echo $data["hdep"]; ?></td>
+      <td><?php echo $data["harr"]; ?></td>
       <!--<td><?php //echo $data->conducteur->nom; ?></td>
       <td><?php //echo $data->conducteur->prenom; ?></td>
       <td><?php //echo $data->contraintes; ?></td>-->
