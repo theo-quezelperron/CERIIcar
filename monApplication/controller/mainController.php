@@ -42,10 +42,10 @@ class mainController
 
 	public static function tableau($request, $context){
         if (isset($_GET['depart']) && isset($_GET['arrivee']) && isset($_GET['nbplace'])){
-			$corres = 999;
-            if(!isset($_POST['corres']))
+			$correspondance = 999;
+            if(!isset($_GET['correspondance']))
             {
-                $corres = 1;
+                $correspondance = 1;
             }
 
 			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
@@ -73,10 +73,10 @@ class mainController
 			$context->vArr  = $_GET['arrivee'];
 			$context->nbp   = $_GET['nbplace'];
 
-			$context->corres = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $corres );
+			$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
 			$context->corres_info = voyageTable::getCorrespondancesInfo();
-			var_dump($context->corres);
-			if( is_null( $context->corres ) )
+			var_dump($context->correspondance);
+			if( is_null( $context->correspondance ) )
 			{
 				$context->message = "Aucun trajet trouvé.";
 				return context::ERROR;
