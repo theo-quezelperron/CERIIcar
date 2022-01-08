@@ -17,7 +17,7 @@ echo'
     </thead>
     <tbody>
            ';    
-    foreach( $context->voyages as $data ): ?>
+    foreach( $context->coress as $data ): ?>
     <tr>
     <th scope="row">1</th>
       <td><?php echo $data->trajet->depart; ?></td>
