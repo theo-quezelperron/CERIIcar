@@ -16,7 +16,8 @@ echo'
         </tr>
     </thead>
     <tbody>
-           ';    
+           ';
+           var_dump($context->coress);    
     foreach( $context->coress as $data ): ?>
     <tr>
     <th scope="row">1</th>
