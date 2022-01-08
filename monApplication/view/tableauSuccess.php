@@ -8,11 +8,10 @@ echo'
             <th scope="col">Arrivée</th>
             <th scope="col">Distance</th>
             <th scope="col">Places</th>
-            <th scope="col">Tarif</th>
+            <th scope="col">Tarif trajet</th>
+            <th scope="col">Tarif total</th>
             <th scope="col">Heure de départ</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Contraintes</th>
+            <th scope="col">Heure d\'arrivée</th>
         </tr>
     </thead>
     <tbody>
@@ -21,15 +20,17 @@ echo'
     foreach( $context->correspondance as $data ): ?>
     <tr>
     <th scope="row">1</th>
-      <td><?php echo $data->trajet->depart; ?></td>
-      <td><?php echo $data->trajet->arrivee; ?></td>
-      <td><?php echo $data->trajet->distance; ?></td>
+      <td><?php echo $data->vdep; ?></td>
+      <td><?php echo $data->varr; ?></td>
+      <td><?php echo $data->distance; ?></td>
       <td><?php echo $data->nbplace; ?></td>
-      <td><?php echo $data->tarif; ?></td>
-      <td><?php echo $data->heuredepart; ?></td>
-      <td><?php echo $data->conducteur->nom; ?></td>
-      <td><?php echo $data->conducteur->prenom; ?></td>
-      <td><?php echo $data->contraintes; ?></td>
+      <td><?php echo $data->tarifpp; ?></td>
+      <td><?php echo $data->tarifg; ?></td>
+      <td><?php echo $data->hdep; ?></td>
+      <td><?php echo $data->harr; ?></td>
+      <!--<td><?php //echo $data->conducteur->nom; ?></td>
+      <td><?php //echo $data->conducteur->prenom; ?></td>
+      <td><?php //echo $data->contraintes; ?></td>-->
     </tr>
     <?php endforeach ?>
     </tbody>
