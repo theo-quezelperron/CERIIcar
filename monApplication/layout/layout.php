@@ -29,14 +29,15 @@
           <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Recherche</a>
         </li>
         <?php if(!isset($_SESSION["id"])){
+          var_dump($_SESSION);
           echo '<li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="#">Ajouter un voyage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Profil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=logout">Logout</a>
+          <a class="nav-link" href="monApplication.php?action=logout">Logout</a>
         </li>
         ';
         }
