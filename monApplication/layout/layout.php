@@ -28,7 +28,9 @@
         <li class="nav-item">
           <a class="nav-link" href="monApplication.php?action=recherche">Recherche</a>
         </li>
-        <?php if($_SESSION == []){
+        <?php
+        var_dump($_SESSION);
+        if($_SESSION == []){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Ajouter un voyage</a>
         </li>
