@@ -61,7 +61,7 @@ class mainController
 				if ($bool == false){
 					$context->voyages = null;
 				}
-				else if (empty($query))
+				if(empty($query))
 					{
 						$context->voyages = 9999;
 				}
