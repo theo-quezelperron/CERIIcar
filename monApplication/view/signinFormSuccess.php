@@ -1,3 +1,5 @@
+
+<div id="htmlResult">
 <form id="enregistrement">
     <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Nom d'utilisateur</label>
@@ -17,5 +19,4 @@
     </div>
 </form>
 <button class="btn btn-primary enregistrement">S'enregistrer</button>
-</br>
-<div id="htmlResult"></div>
+</div>
