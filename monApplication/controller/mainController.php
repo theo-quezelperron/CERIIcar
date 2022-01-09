@@ -135,7 +135,7 @@ class mainController
 				$context->corres_info = $query->fetchAll();
 			}
 			$context->corres_info = str_replace("{", "(", $context->corres_info[0]["array_agg"]);
-				$context->corres_info = str_replace("}", ")", $context->corres_info[0]["array_agg"]);
+				$context->corres_info = str_replace("}", ")", $context->corres_info);
 			return context::SUCCESS;
 			if(!is_null($context->corres_info)){
 				$i = count($context->corres_info);
