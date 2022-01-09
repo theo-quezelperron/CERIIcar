@@ -159,7 +159,7 @@ $('body').on("click", '#btn_1', function(){
   });
 
   $('body').on('click', '.reserverG', function () {
-    $(this).attr('id')
+    $(this).attr('data-value')
     console.log($(this));
     console.log($("#nbplace").val());
     let urlString = "ajaxDispatcher.php?action=reserverG";
