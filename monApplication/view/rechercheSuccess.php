@@ -1,6 +1,6 @@
 </br>
 <!-- Partie formulaire -->
-<div id="isLogged" value=<?php  if ($context->isLogged){echo '"'. $context->isLogged . '"';} else { echo '"0"';}?> style="display: none"></div>
+<div id="isLogged" data-value=<?php  if ($context->isLogged){echo '"'. $context->isLogged . '"';} else { echo '"0"';}?> style="display: none"></div>
 <div class="container-fluid">
 <form>
   <div class="mb-3">
