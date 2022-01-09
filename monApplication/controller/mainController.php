@@ -218,7 +218,6 @@ class mainController
 	public static function logout($request, $context)
 	{
 		session_destroy();
-		while(!empty($_SESSION)){}
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";
 		return context::SUCCESS;
 	}
