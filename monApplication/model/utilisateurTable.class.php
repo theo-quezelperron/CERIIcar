@@ -26,6 +26,16 @@ class utilisateurTable {
 	$user = $userRepository->findOneBy(array('id' => $id));
 	return $user; 
   }
+
+  
+  public static function getUserByPseudo($pseudo)
+  {
+  	$em = dbconnection::getInstance()->getEntityManager() ;
+
+	$userRepository = $em->getRepository('utilisateur');
+	$user = $userRepository->findOneBy(array('identifiant' => $pseudo));
+	return $user; 
+  }
 }
 
 
