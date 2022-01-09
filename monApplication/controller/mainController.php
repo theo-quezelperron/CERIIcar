@@ -318,19 +318,9 @@ class mainController
 	}
 
 	public static function reserverSolo($request, $context){
-		if(isset($_GET["id_voyage"])){
+		if(isset($_POST["id_voyage"])){
+
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_POST["id_voyage"] .';';
-			$query = $em->prepare($op);
-			$query->execute();
-			if(empty($query)){
-				$context->corres_info = -9999;
-			}
-			else {
-				$context->corres_info = $query->fetchAll();
-			}
-			$context->corres_info = str_replace("{", "(", $context->corres_info[0]["array_agg"]);
-			$context->corres_info = str_replace("}", ")", $context->corres_info);
 			if(isset($_POST['id_voyage']) and isset($_POST['nbplace']))
         	{
             $dispo = voyageTable::checkVoyageDispo( $_POST['id_voyage'], $_POST['nbplace']);
