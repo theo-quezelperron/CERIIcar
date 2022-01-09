@@ -37,6 +37,8 @@ class mainController
 		$context->title = "Recherchez votre voyage !";
 		//Fonction permettant de peupler les select fields
 		$context->villes = trajetTable::getAllVilles();
+		if($context->getSessionAttribute('id')){$context->isLogged = true;}
+		else {$context->isLogged = false;}
         return context::SUCCESS;
     }
 
@@ -220,7 +222,6 @@ class mainController
 
 	public static function logout($request, $context)
 	{
-		$context->isLogged = false;
 		session_unset();
 		//unset($_SESSION);
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";

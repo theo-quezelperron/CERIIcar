@@ -1,5 +1,6 @@
 </br>
 <!-- Partie formulaire -->
+<div id="isLogged" value=<?php echo '"'. $context->isLogged . '"';?> style="display: none"></div>
 <div class="container-fluid">
 <form>
   <div class="mb-3">
