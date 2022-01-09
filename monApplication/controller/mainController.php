@@ -221,8 +221,8 @@ class mainController
 	public static function logout($request, $context)
 	{
 		$context->isLogged = false;
-		session_destroy();
-		unset($_SESSION);
+		session_unset();
+		//unset($_SESSION);
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";
 		return context::SUCCESS;
 	}
