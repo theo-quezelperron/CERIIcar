@@ -50,6 +50,8 @@ $("#btn_1").on("click", function(){
     })
     
   });
+
+  var elements = document.getElementsByClassName("classname");
   // }).done(function(response){
   //         let data = JSON.stringify(response);
   //         elert(data);

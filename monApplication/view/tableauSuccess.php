@@ -6,17 +6,15 @@
                 <th scope="col">#</th>
                 <th scope="col">Départ</th>
                 <th scope="col">Arrivée</th>
-                <th scope="col">Distance</th>
-                <th scope="col">Places</th>
-                <th scope="col">Tarif trajet</th>
+                <th scope="col">Prix</th>
+                <th scope="col">duree</th>
                 <th scope="col">Tarif total</th>
-                <th scope="col">Heure de départ</th>
-                <th scope="col">Heure d\'arrivée</th>
+                <th scope="col">Attente</th>
+                <th scope="col">Nombre de voyages</th>
             </tr>
         </thead>
         <tbody>
                ';
-               var_dump($context->correspondance_info);
                echo '</br>';    
         foreach( $context->correspondance_info as $data ): ?>
         <tr>
@@ -27,7 +25,7 @@
           <td><?php echo $data["duree"]; ?></td>
           <td><?php echo $data["attente"]; ?></td>
           <td><?php echo $data["nb_voyage"]; ?></td>
-          <td><button id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
+          <td><button classs="button button-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
         </tr>
         <?php endforeach ?>
         </tbody>
