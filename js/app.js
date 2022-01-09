@@ -7,10 +7,9 @@ $("#btn_1").on("click", function(){
       processData: false,
       contentType: false,
       success: function(result){
-        let parsed_content = JSON.parse(result);
         console.log(result);
-        $("#htmlResult").html(parsed_content.corps);
-        switch (parsed_content.bandeau.class) {
+        $("#htmlResult").html(result.corps);
+        switch (result.bandeau.class) {
           case "Alerte":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert alert-danger fade show");
@@ -28,7 +27,7 @@ $("#btn_1").on("click", function(){
             $("#bandeau").addClass("alert alert-primary fade show");
             break;
         }
-        $("#bandeau").html(parsed_content.bandeau.value);
+        $("#bandeau").html(result.bandeau.value);
         $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
          
         document.getElementsByClassName("alert")[0].style.display = "block";
@@ -39,7 +38,7 @@ $("#btn_1").on("click", function(){
       },
       error: function(result){
         let parsed_content = JSON.parse(result);
-        $("#htmlResult").html(parsed_content.corps);
+        $("#htmlResult").html(result.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
