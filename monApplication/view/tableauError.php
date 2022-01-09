@@ -1,3 +1,3 @@
 <?php
-echo var_dump($context->correspondance);    
+echo 'Oups something went wrong!';    
     

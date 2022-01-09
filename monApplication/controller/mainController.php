@@ -43,45 +43,61 @@ class mainController
 	public static function tableau($request, $context){
         if (isset($_GET['depart']) && isset($_GET['arrivee']) && isset($_GET['nbplace'])){
 			$correspondance = 999;
-            if($_GET['correspondance'] == "false")
-            {
-                $correspondance = 1;
-            }
-
-			$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-			$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
 			$context->alerts = [];
-			
-		//}
 			$context->vDep  = $_GET['depart'];
 			$context->vArr  = $_GET['arrivee'];
 			$context->nbp   = $_GET['nbplace'];
-
-			$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
-			$context->info1 = $context->correspondance;
-			$context->corres_info = voyageTable::getCorrespondancesInfo();
-			$context->info2 = $context->correspondance_info;
-			if(!is_null($context->correspondance)){
-				$i = count($context->correspondance);
-				switch ($i){
-					case null:
-						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-						break;
-					case 0:
-						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
-						break;
-					default:
-						$context->alerts["Réussite"] = count($context->correspondance) > 1 ? count($context->correspondance) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
-						break;
+            
+			
+			if($_GET['correspondance'] == "false")
+            {
+                $correspondance = 1;
+				$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
+				$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+				if(!is_null($context->voyage)){
+					$i = count($context->correspondance);
+					switch ($i){
+						case null:
+							$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+							break;
+						case 9999:
+							$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+							break;
+						default:
+							$context->alerts["Réussite"] = count($context->voyage) > 1 ? count($context->voyage) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
+							break;
+					}
+				}
+				else {
+					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+				}
+            }
+			else{
+				$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
+				$context->corres_info = voyageTable::getCorrespondancesInfo();
+				if(!is_null($context->correspondance) || $context->correspondance == 9999){
+					$i = count($context->correspondance);
+					switch ($i){
+						case null:
+							$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+							break;
+						case 9999:
+							$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+							break;
+						default:
+							$context->alerts["Réussite"] = count($context->correspondance) > 1 ? count($context->correspondance) . " correspondances disponibles!" : count($context->voyages) . " correspondance disponible!";
+							break;
+					}
+				}
+				else {
+					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 				}
 			}
-			else {
-				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-			}
-			
-			if( is_null( $context->correspondance ) )
+
+
+			if(is_null($context->correspondance))
 			{
-				$context->message = "Aucun trajet trouvé.";
+				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 				return context::ERROR;
 			}
 
@@ -93,7 +109,7 @@ class mainController
 			$context->vArr  = null; 
 			$context->nbp   = null; 
 
-			$context->message = "Il y a un problème.";
+			$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 			return context::ERROR;
 			}
 	}
