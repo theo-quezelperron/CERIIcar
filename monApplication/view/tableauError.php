@@ -1,4 +1,4 @@
 <?php
-var_dump($context->voyages);
-echo 'Oups something went wrong!';    
+
+echo 'Oups something went wrong! ' . var_dump($context->voyages);    
     

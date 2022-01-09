@@ -12,7 +12,7 @@ class voyageTable {
 	$voyage = $voyageRepository->findBy(array('trajet' => $trajet ));	
 	
     if ($voyage == false){
-		$voyage = []; 
+		return null; 
 			   }
     
 	return $voyage; 
