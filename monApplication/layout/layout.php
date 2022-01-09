@@ -30,7 +30,7 @@
         </li>
         <?php
         var_dump($_SESSION);
-        if($_SESSION == []){
+        if(!empty($_SESSION)){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Ajouter un voyage</a>
         </li>
