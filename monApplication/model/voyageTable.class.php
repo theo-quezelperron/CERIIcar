@@ -11,7 +11,7 @@ class voyageTable {
 	$voyageRepository = $em->getRepository('voyage');
 	$voyage = $voyageRepository->findBy(array('trajet' => $trajet ));	
 	
-    if ($voyage == false){
+    if (empty($voyage)){
 		return null; 
 			   }
     
