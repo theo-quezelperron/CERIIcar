@@ -122,6 +122,8 @@ class mainController
 	}
 
 	public static function detailCorres($request, $context){
+		$context->isLogged = false;
+		if (!empty($_SESSION["id"])){$context->isLogged = true;}
 		$context->alerts = [];
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
@@ -206,6 +208,7 @@ class mainController
                 $_SESSION['prenom'] = $res['prenom'];
                 $_SESSION['identifiant'] = $res['identifiant'];
 				$context->alerts["Réussite"] = "Vous êtes connecté";
+				if (!empty($_SESSION["id"])){$context->isLogged = true;}
                 return context::SUCCESS;
             }
             $context->alerts["Alert"] = "Mot de passe/Pseudo incorrect!";
@@ -217,6 +220,7 @@ class mainController
 
 	public static function logout($request, $context)
 	{
+		$context->isLogged = false;
 		session_destroy();
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";
 		return context::SUCCESS;

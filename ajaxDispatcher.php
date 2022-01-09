@@ -20,8 +20,8 @@ $context->init($nameApp);
 
 $view=$context->executeAction($action, $_REQUEST);
 
-$context->isLogged = false;
-if (!empty($_SESSION["id"])){$context->isLogged = true;}
+
+
 //traitement des erreurs de bases, reste a traiter les erreurs d'inclusion
 if($view===false)
 {
