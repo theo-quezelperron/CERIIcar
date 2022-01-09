@@ -56,6 +56,8 @@ if (!is_null($context->voyages)){
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Contraintes</th>
+            ';
+            if($context->session){ echo '<th scope="col">Place</th>';} echo '
         </tr>
     </thead>
     <tbody>
@@ -67,7 +69,7 @@ if (!is_null($context->voyages)){
       <td><?php echo $data["arrivee"]; ?></td>
       <td><?php echo $data["distance"]; ?></td>
       <td><?php echo $data["voyage_nbplace"]; ?></td>
-      <td><?php echo $data["tarif"]; ?></td>
+      <td><?php echo $data["voyage_tarif"]; ?></td>
       <td><?php echo $data["voyage_heuredepart"]; ?></td>
       <td><?php echo $data["nom"]; ?></td>
       <td><?php echo $data["prenom"]; ?></td>
