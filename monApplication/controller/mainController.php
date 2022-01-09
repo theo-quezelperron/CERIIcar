@@ -123,7 +123,7 @@ class mainController
 
 	public static function detailCorres($request, $context){
 		$context->isLogged = false;
-		if (!empty($_SESSION["id"])){$context->isLogged = true;}
+		if (!empty($_SESSION)){$context->isLogged = true;}
 		$context->alerts = [];
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
