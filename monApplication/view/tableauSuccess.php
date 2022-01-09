@@ -63,15 +63,15 @@ if (!is_null($context->voyages)){
     foreach( $context->voyages as $data ): ?>
     <tr>
     <th scope="row">1</th>
-      <td><?php echo $data->trajet->depart; ?></td>
-      <td><?php echo $data->trajet->arrivee; ?></td>
-      <td><?php echo $data->trajet->distance; ?></td>
-      <td><?php echo $data->nbplace; ?></td>
-      <td><?php echo $data->tarif; ?></td>
-      <td><?php echo $data->heuredepart; ?></td>
-      <td><?php echo $data->conducteur->nom; ?></td>
-      <td><?php echo $data->conducteur->prenom; ?></td>
-      <td><?php echo $data->contraintes; ?></td>
+      <td><?php echo $data["depart"]; ?></td>
+      <td><?php echo $data["arrivee"]; ?></td>
+      <td><?php echo $data["distance"]; ?></td>
+      <td><?php echo $data["nbplace"]; ?></td>
+      <td><?php echo $data["tarif"]; ?></td>
+      <td><?php echo $data["heuredepart"]; ?></td>
+      <td><?php echo $data["nom"]; ?></td>
+      <td><?php echo $data["prenom"]; ?></td>
+      <td><?php echo $data["contraintes"]; ?></td>
     </tr>
     <?php endforeach ?>
     </tbody>
