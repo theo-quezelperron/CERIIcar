@@ -122,6 +122,7 @@ class mainController
 	}
 
 	public static function detailCorres($request, $context){
+		$context->alerts = [];
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 			//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
@@ -156,7 +157,7 @@ class mainController
 					$context->voyages = -9999;
 				}
 				else {
-					$context->voyages = $query->fetchAll();
+					$context->voyages = $query1->fetchAll();
 				}
 				if(!is_null($context->voyages)){
 					$i = count($context->voyages);
