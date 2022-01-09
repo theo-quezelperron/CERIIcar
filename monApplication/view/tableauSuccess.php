@@ -23,7 +23,7 @@
             </div>';
         foreach( $context->correspondance_info as $data ): ?>
         <tr>
-        <th scope="row"><span id='id_corres'><?php echo $data["id"]; ?></span></th>
+        <th scope="row"><?php echo $data["id"]; ?></th>
           <td><?php echo $data["depart"]; ?>H00</td>
           <td><?php echo $data["arrivee"]; ?>H00</td>
           <td><?php echo $data["prix"]; ?>€</td>
