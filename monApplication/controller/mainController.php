@@ -192,14 +192,14 @@ class mainController
 
 	public static function login($request, $context)
     {
-        if(!is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
+        if(!is_null(utilisateurTable::getUserByPseudo($_POST['cpseudo'])))
         {
             $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = '. $_POST['pseudo'] .';';
+            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = '. $_POST['cpseudo'] .';';
             $query = $em->prepare($op);
-            $bool = $query->execute([':pseudo' => $_POST['pseudo']]);
+            $bool = $query->execute();
             $res = $query->fetch(PDO::FETCH_ASSOC);
-            if(strcmp(sha1($_POST['psw']), $res['pass']) == 0)
+            if(strcmp(sha1($_POST['cpass']), $res['pass']) == 0)
             {
                 $_SESSION['id'] = $res['id'];
                 $_SESSION['nom'] = $res['nom'];

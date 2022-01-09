@@ -53,11 +53,11 @@
             <form action="monApplication.php?action=login" method="post">
               <div class="mb-3">
                 <label for="exampleInputUser1" class="form-label">Nom d\'utilisateur</label>
-                <input type="text" class="form-control" id="pseudo" name="pseudo" aria-describedby="userHelp">
+                <input type="text" class="form-control" id="cpseudo" name="cpseudo" aria-describedby="userHelp">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="pass" name="pass">
+                <input type="password" class="form-control" id="cpass" name="cpass">
               </div>
               <button type="submit" class="btn btn-primary">Connection</button>
             </form>
