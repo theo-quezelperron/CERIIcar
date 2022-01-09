@@ -121,7 +121,7 @@ class mainController
 		}
 	}
 
-	public function detailCorres($request, $context){
+	public static function detailCorres($request, $context){
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 			//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
