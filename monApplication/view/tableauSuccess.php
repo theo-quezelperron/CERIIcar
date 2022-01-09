@@ -1,4 +1,4 @@
-<?php if (isset($context->correspondance)){
+<?php if (!is_null($context->correspondance)){
     echo'
     <table class="table">
         <thead>
@@ -40,7 +40,7 @@
     </table>    
 <?php }?>
 <?php
-if (isset($context->voyage)){
+if (!is_null($context->voyage)){
     echo '
     <table class="table">
     <thead>
