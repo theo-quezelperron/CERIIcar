@@ -55,7 +55,7 @@ class mainController
 				$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
 				//$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-        		$op = 'SELECT * FROM jabaianb.voyage WHERE trajet = '. $context->trajet->id .' AND nbplace > '. $_GET['nbplace'] .' ORDER BY depart ASC';
+        		$op = 'SELECT * FROM jabaianb.voyage WHERE trajet = ' . $context->trajet->id . ' AND nbplace >= ' . $_GET['nbplace'];
         		$query = $em->prepare($op);
         		$bool = $query->execute();
 				if ($bool == false){
