@@ -327,7 +327,7 @@ class mainController
 
             $context->dispo = $dispo;
 
-            if( $dispo['checkcorresdispo'])
+            if( $dispo[0]['checkvoyagedispo'])
             {
                 $voyages = voyageTable::getVoyagesById( $_POST['id_voyage'] );
 
