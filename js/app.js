@@ -172,7 +172,6 @@ $('body').on("click", '#btn_1', function(){
       success: function(result){
         console.log(result);
         let parsed_content = JSON.parse(result);
-        $("#htmlContent").html(parsed_content.corps);
         switch (parsed_content.bandeau.class) {
           case "Alerte":
             $("#bandeau").removeClass();
@@ -201,7 +200,6 @@ $('body').on("click", '#btn_1', function(){
       },
       error: function(result){
         let parsed_content = JSON.parse(result);
-        $("#htmlResult").html(parsed_content.corps);
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
