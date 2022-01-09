@@ -1,2 +1,1 @@
-C'est l'action par défaut ! 
-<a href=monApplication.php?action=logout>Deconnectez vous !</a>
+<h1>Bienvenue sur le site CERICAR!</h1>
