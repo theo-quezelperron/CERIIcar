@@ -105,7 +105,7 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.enregistrement', function () {
     $(this).attr('id')
     console.log($(this));
-    console.log($("#enregistrement")[0][0].val());
+    console.log($("#enregistrement")[0][0]);
     let urlString = "ajaxDispatcher.php?action=signin";
     let test = $.ajax({
       url: urlString,
