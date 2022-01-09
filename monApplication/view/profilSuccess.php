@@ -1,4 +1,8 @@
-<?php var_dump($context->resa);
+<h2>Profil:</h2></br>
+<p>Username: <?php echo '';?></p></br>
+<p>Nom: <?php echo '';?></p></br>
+<p>Prénom: <?php echo '';?></p></br>
+<?php
 echo '
     <table class="table">
     <thead>
