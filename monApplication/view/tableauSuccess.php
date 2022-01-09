@@ -1,6 +1,6 @@
 <?php if (!is_null($context->correspondance)){
     echo'
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -25,8 +25,14 @@
           <td><?php echo $data["duree"]; ?>H00</td>
           <td><?php echo $data["attente"]; ?>H00</td>
           <td><?php echo $data["nb_voyage"]; ?></td>
-          <td><button class="button button-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
+          <td><button class="btn btn-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?> data-bs-toggle="collapse" href="#collapseExample" type="button" role="button" aria-expanded="false" aria-controls="collapseExample">+ infos</button>
         </tr>
+        <div class="collapse" id="collapseExample">
+			<div class="card card-body collapsed-content">
+				<div id="htmlContent">
+				</div>
+			</div>
+		</div>
         <?php endforeach ?>
         </tbody>
     </table>    
