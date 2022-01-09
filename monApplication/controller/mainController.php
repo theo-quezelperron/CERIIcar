@@ -195,7 +195,7 @@ class mainController
         if(!is_null(utilisateurTable::getUserByPseudo($_POST['cpseudo'])))
         {
             $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = '. $_POST['cpseudo'] .';';
+            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = \''. $_POST['cpseudo'] .'\';';
             $query = $em->prepare($op);
             $bool = $query->execute();
             $res = $query->fetch(PDO::FETCH_ASSOC);
