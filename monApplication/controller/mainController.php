@@ -83,6 +83,7 @@ class mainController
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 					return context::ERROR;
 				}
+				return context::SUCCESS;
             }
 			else{
 				$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
@@ -105,25 +106,17 @@ class mainController
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 					return context::ERROR;
 				}
+				return context::SUCCESS;
 			}
-
-
-			// if(is_null($context->correspondance) || is_null($context->voyage))
-			// {
-			// 	$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-			// 	return context::ERROR;
-			// }
-
-			return context::SUCCESS;
 			}
-			else
-			{
-			$context->vDep  = null; 
-			$context->vArr  = null; 
-			$context->nbp   = null; 
+		else
+		{
+		$context->vDep  = null; 
+		$context->vArr  = null; 
+		$context->nbp   = null; 
 
-			$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-			return context::ERROR;
-			}
+		$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+		return context::ERROR;
+		}
 	}
 }
