@@ -24,12 +24,12 @@ if (!is_null($context->voyages)){
       <td><?php echo $data["depart"]; ?></td>
       <td><?php echo $data["arrivee"]; ?></td>
       <td><?php echo $data["distance"]; ?>Km</td>
-      <td><?php echo $data["nbplace"]; ?></td>
-      <td><?php echo $data["tarif"]; ?>€</td>
-      <td><?php echo $data["heuredepart"]; ?>H00</td>
+      <td><?php echo $data["voyage_nbplace"]; ?></td>
+      <td><?php echo $data["voyage_tarif"]; ?>€</td>
+      <td><?php echo $data["voyage_heuredepart"]; ?>H00</td>
       <td><?php echo $data["nom"]; ?></td>
       <td><?php echo $data["prenom"]; ?></td>
-      <td><?php echo $data["contraintes"]; ?></td>
+      <td><?php echo $data["voyage_contraintes"]; ?></td>
       <?php 
       if($context->session){
           echo '<td><input class="reserverPlace" type="number" name="nbplace" value="1" min="1" max="100"></td>';
