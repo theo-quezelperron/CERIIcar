@@ -34,7 +34,7 @@
           <a class="nav-link" href="#">Ajouter un voyage</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profil</a>
+          <a class="nav-link" href="monApplication.php?action=profil">Profil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="monApplication.php?action=logout">Logout</a>
