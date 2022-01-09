@@ -1,4 +1,4 @@
-$("#btn_1").on("click", function(){
+$('body').on("click", '#btn_1', function(){
     console.log("clique");
     let y = document.getElementById('isLogged')
     console.log(y);
