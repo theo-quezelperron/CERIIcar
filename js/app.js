@@ -111,8 +111,8 @@ $("#btn_1").on("click", function(){
       url: urlString,
       method: "POST",
       data: { pseudo: $("#pseudo").val(), nom: $("#nom").val(), prenom: $("#prenom").val(), pass: $("#pass").val()},
-      processData: false,
-      contentType: false,
+      //processData: false,
+      //contentType: false,
       success: function(result){
         console.log(result);
         let parsed_content = JSON.parse(result);
