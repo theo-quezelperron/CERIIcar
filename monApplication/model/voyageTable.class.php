@@ -12,9 +12,26 @@ class voyageTable {
 	$voyage = $voyageRepository->findBy(array('trajet' => $trajet ));	
 	
     if (empty($voyage)){
+        // echo 'Erreur sql: aucun trajet trouvé';
 		return null; 
 			   }
     
+	return $voyage; 
+	}
+
+    public static function getVoyagesById( $id ) 
+	{
+  	$em = dbconnection::getInstance()->getEntityManager() ;
+
+	$voyageRepository = $em->getRepository('voyage');
+	$voyage = $voyageRepository->findBy(array('id' => $id ));	
+	
+    if (empty($voyage))
+    {
+		// echo 'Erreur sql: aucun trajet trouvé';
+        return null;
+    
+    }
 	return $voyage; 
 	}
     
@@ -62,6 +79,25 @@ class voyageTable {
     }
 
 	public static function checkCorresDispo( $id, $nbp )
+    {
+        $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+
+        $query_str = "select * from checkCorresDispo( $id, $nbp );";
+        $query = $em->prepare($query_str);
+
+        $bool = $query->execute();
+        if ($bool == false)
+        {
+            return NULL;
+        }
+        if (empty($query))
+        {
+            return null;
+        }
+        return $query->fetchAll();
+    }
+
+    public static function checkVoyageDispo( $id, $nbp )
     {
         $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 

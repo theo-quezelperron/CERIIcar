@@ -318,10 +318,9 @@ class mainController
 	}
 
 	public static function reserverS($request, $context){
-		if(isset($_GET["id_corres"])){
+		if(isset($_GET["id_voyage"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-			//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
-			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_GET["id_corres"] .';';
+			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_POST["id_voyage"] .';';
 			$query = $em->prepare($op);
 			$query->execute();
 			if(empty($query)){
@@ -332,23 +331,43 @@ class mainController
 			}
 			$context->corres_info = str_replace("{", "(", $context->corres_info[0]["array_agg"]);
 			$context->corres_info = str_replace("}", ")", $context->corres_info);
-			if(!is_null($context->corres_info)){
-				$i = count($context->corres_info);
-				switch ($i){
-					case null:
-						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-						break;
-					case -9999:
-						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
-						break;
-					default:
-						$context->alerts["Réussite"] = "Détails correctement récupérés";
-						break;
-				}
-			}
+			if(isset($_POST['id_voyage']) and isset($_POST['nbplace']))
+        	{
+            $dispo = voyageTable::checkVoyageDispo( $_POST['id_voyage'], $_POST['nbplace']);
+
+            $context->dispo = $dispo;
+
+            if( $dispo[0]['checkcorresdispo'] == true )
+            {
+                $voyages = voyageTable::getVoyagesById( $_POST['id_voyage'] );
+
+                $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+
+                
+				$op = 'update jabaianb.voyage set nbplace = nbplace - ' . $_POST['nbplace'] . ' where id = ' . $voyages . ';';
+				$query = $em->prepare($op);
+				$bool = $query->execute();
+
+				$query = $em->prepare('select max( id )+1 as id from jabaianb.reservation limit 1;');
+				$query->execute();
+
+				$res = $query->fetch(PDO::FETCH_ASSOC);
+				$newID = $res['id'];
+
+				$op = 'insert into jabaianb.reservation values (' .$newID .', '.$voyages.', '.$_SESSION['id'].');';
+				$query = $em->prepare($op);
+				$bool = $query->execute();
+			
+				$context->alerts["Réussite"] = "L'ensemble de voyage a bien été réservé.";
+                return context::SUCCESS;
+            }
+            else{
+				$context->alerts["Warning"] = "Enregistrement impossible!";
+                return context::SUCCESS;
+        	}
+    		}
 		}
 	}
-	//SELECT voyage.id AS voyage_id, voyage.conducteur AS voyage_conducteur, voyage.trajet AS voyage_trajet, voyage.tarif AS voyage_tarif, voyage.nbplace AS voyage_nbplace, voyage.heuredepart AS voyage_heuredepart, voyage.contraintes AS voyage_contraintes, a.*, b.* FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE voyage.id IN (190);
 	public static function profil($request, $context){
 		if(isset($_SESSION)){$context->session = $_SESSION;}
 		return context::SUCCESS;
