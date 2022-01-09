@@ -53,7 +53,7 @@ class mainController
             {
                 $correspondance = 1;
 				$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-				//$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+				//$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id); <- ne fonctionne pas correctement avec la table
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 				//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
         		$op = 'SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = ' . $context->trajet->id . ' AND nbplace >= ' . $_GET['nbplace'];

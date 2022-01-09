@@ -18,20 +18,16 @@
                ';
                var_dump($context->correspondance_info);
                echo '</br>';    
-        foreach( $context->correspondance as $data ): ?>
+        foreach( $context->correspondance_info as $data ): ?>
         <tr>
-        <th scope="row">1</th>
-          <td><?php echo $data["vdep"]; ?></td>
-          <td><?php echo $data["varr"]; ?></td>
-          <td><?php echo $data["distance"]; ?></td>
-          <td><?php echo $data["nbplace"]; ?></td>
-          <td><?php echo $data["tarifpp"]; ?></td>
-          <td><?php echo $data["tarifg"]; ?></td>
-          <td><?php echo $data["hdep"]; ?></td>
-          <td><?php echo $data["harr"]; ?></td>
-          <!--<td><?php //echo $data->conducteur->nom; ?></td>
-          <td><?php //echo $data->conducteur->prenom; ?></td>
-          <td><?php //echo $data->contraintes; ?></td>-->
+        <th scope="row"><span id='id_corres'><?php echo $data["id"]; ?></span></th>
+          <td><?php echo $data["depart"]; ?></td>
+          <td><?php echo $data["arrivee"]; ?></td>
+          <td><?php echo $data["prix"]; ?></td>
+          <td><?php echo $data["duree"]; ?></td>
+          <td><?php echo $data["attente"]; ?></td>
+          <td><?php echo $data["nb_voyage"]; ?></td>
+          <td><button id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
         </tr>
         <?php endforeach ?>
         </tbody>
