@@ -101,7 +101,7 @@ class voyageTable {
     {
         $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 
-        $query_str = "select * from checkCorresDispo( $id, $nbp );";
+        $query_str = "select * from checkVoyageDispo( $id, $nbp );";
         $query = $em->prepare($query_str);
 
         
