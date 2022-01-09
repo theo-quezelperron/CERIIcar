@@ -17,3 +17,5 @@
     </div>
      <button type="submit" class="btn btn-primary enregistrement">S'enregistrer</button>
 </form>
+</br>
+<div class="htmlResult"></div>
