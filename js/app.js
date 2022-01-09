@@ -9,7 +9,7 @@ $("#btn_1").on("click", function(){
       success: function(result){
         console.log(result);
         $("#htmlResult").html(result.corps);
-        switch (result.bandeau.class) {
+        switch (result.bandeau["class"]) {
           case "Alerte":
             $("#bandeau").removeClass();
             $("#bandeau").addClass("alert alert-danger fade show");
@@ -27,7 +27,7 @@ $("#btn_1").on("click", function(){
             $("#bandeau").addClass("alert alert-primary fade show");
             break;
         }
-        $("#bandeau").html(result.bandeau.value);
+        $("#bandeau").html(result.bandeau[value]);
         $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
          
         document.getElementsByClassName("alert")[0].style.display = "block";
