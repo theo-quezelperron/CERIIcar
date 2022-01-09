@@ -1,7 +1,7 @@
 <h2>Profil:</h2></br>
-<p>Username: <?php echo '';?></p></br>
-<p>Nom: <?php echo '';?></p></br>
-<p>Prénom: <?php echo '';?></p></br>
+<p>Username: <?php echo $contect->session['identifiant'];?></p></br>
+<p>Nom: <?php echo $contect->session['nom'];?></p></br>
+<p>Prénom: <?php echo $contect->session['prenom'];?></p></br>
 <?php
 echo '
     <table class="table">
