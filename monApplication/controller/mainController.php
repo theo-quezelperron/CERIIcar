@@ -124,7 +124,7 @@ class mainController
 	public static function detailCorres($request, $context){
 		$context->isLogged = false;
 		//$context->session = $_SESSION;//Ne semble pas fonctionner avec Ajax ???
-		if (isset($_SESSION)){$context->isLogged = true;}
+		if (isset($_SESSION['id'])){$context->isLogged = true;}
 		$context->alerts = [];
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
