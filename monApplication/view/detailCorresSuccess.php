@@ -32,7 +32,7 @@ if (!is_null($context->voyages)){
       <td><?php echo $data["contraintes"]; ?></td>
       <?php 
       //var_dump($_SESSION);
-      if(!empty($_SESSION["id"])){
+      if($context->isLogged){
           echo '<td><input class="reserverPlace" type="number" name="nbplace" value="1" min="1" max="100"></td>';
           echo '<td><button class="btn btn-primary reserver" id=' . $data["id"] . '">Réserver</button></td>';
       }?>    
