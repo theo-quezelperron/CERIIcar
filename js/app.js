@@ -105,6 +105,7 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.enregistrement', function () {
     $(this).attr('id')
     console.log($(this));
+    console.log($("#enregistrement"));
     // let urlString = "ajaxDispatcher.php?action=detailCorres&id_corres=" + $(this).attr('id');
     // let test = $.ajax({
     //   url: urlString,
