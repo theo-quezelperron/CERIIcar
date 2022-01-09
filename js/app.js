@@ -51,7 +51,15 @@ $("#btn_1").on("click", function(){
     
   });
 
-  var elements = document.getElementsByClassName("classname");
+  var elements = document.getElementsByClassName("detail_corres");
+
+  var myfunction = function(){
+    console.log(this);
+  }
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', myFunction, false);
+}
   // }).done(function(response){
   //         let data = JSON.stringify(response);
   //         elert(data);
