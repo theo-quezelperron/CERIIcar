@@ -233,7 +233,7 @@ class mainController
 			if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
 			{
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-				$op = 'INSERT INTO jabaianb.utilisateur (identifiant, pass, nom, prenom) VALUES (' . $_POST["pseudo"] . ', ' . sha1($_POST["pseudo"]) . ', ' . $_POST["nom"] . ', ' . $_POST["prenom"] . ');';
+				$op = 'INSERT INTO jabaianb.utilisateur (identifiant, pass, nom, prenom) VALUES (' . $_POST["pseudo"] . ', ' . sha1($_POST["pass"]) . ', ' . $_POST["nom"] . ', ' . $_POST["prenom"] . ');';
 				$query = $em->prepare($op);
 				$bool = $query->execute();
 				$context->alerts["Réussite"] = "Vous vous êtes enregistré, veuillez vous connecter maintenant!";
