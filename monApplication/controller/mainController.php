@@ -189,4 +189,36 @@ class mainController
 			return context::ERROR;
 		}
 	}
+
+	public static function login($request, $context)
+    {
+        if(!is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
+        {
+            $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = '. $_POST['pseudo'] .';';
+            $query = $em->prepare($op);
+            $bool = $query->execute([':pseudo' => $_POST['pseudo']]);
+            $res = $query->fetch(PDO::FETCH_ASSOC);
+            if(strcmp(sha1($_POST['psw']), $res['pass']) == 0)
+            {
+                $_SESSION['id'] = $res['id'];
+                $_SESSION['nom'] = $res['nom'];
+                $_SESSION['prenom'] = $res['prenom'];
+                $_SESSION['identifiant'] = $res['identifiant'];
+				$context->alerts["Réussite"] = "Vous êtes connecté";
+                return context::SUCCESS;
+            }
+            $context->alerts["Alert"] = "Mot de passe/Pseudo incorrect!";
+            return context::ERROR;
+        }
+        $context->alerts["Warning"] = "Nous ne parvenons pas à retrouver votre pseudo, êtes vous bien inscrit?";
+        return context::ERROR;
+    }
+
+	public static function logout($request, $context)
+	{
+		session_destroy();
+		$context->alerts["Réussite"] = "Vous êtes déconnecté";
+		return context::SUCCESS;
+	}
 }
