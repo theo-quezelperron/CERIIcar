@@ -105,12 +105,12 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.enregistrement', function () {
     $(this).attr('id')
     console.log($(this));
-    console.log($("#enregistrement")[0][0]);
+    console.log($("#pseudo").val());
     let urlString = "ajaxDispatcher.php?action=signin";
     let test = $.ajax({
       url: urlString,
       method: "POST",
-      data: { pseudo: $("#enregistrement")[0][0].val(), nom: $("#enregistrement")[0][1].val(), prennom: $("#enregistrement")[0][2].val(), pass: $("#enregistrement")[0][3].val()},
+      data: { pseudo: $("#pseudo").val(), nom: $("#nom").val(), prenom: $("#prenom").val(), pass: $("#pass").val()},
       processData: false,
       contentType: false,
       success: function(result){
