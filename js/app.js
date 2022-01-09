@@ -210,6 +210,58 @@ $('body').on("click", '#btn_1', function(){
     });
   });
 
+  $('body').on('click', '.reserverS', function () {
+    console.log(this.dataset.value);
+    let z = this.dataset.value;
+    z = z.slice(0, -1);
+    console.log($("#nbplace").val());
+    let urlString = "ajaxDispatcher.php?action=reserverS";
+    let test = $.ajax({
+      url: urlString,
+      method: "POST",
+      data: { id_corres: z, nbplace: $("#nbplace").val()},
+      //processData: false,
+      //contentType: false,
+      success: function(result){
+        console.log(result);
+        let parsed_content = JSON.parse(result);
+        switch (parsed_content.bandeau.class) {
+          case "Alerte":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-danger fade show");
+            break;
+          case "Warning":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-warning fade show");
+            break;
+          case "Réussite":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-success fade show");
+            break;
+          default :
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-primary fade show");
+            break;
+        }
+        $("#bandeau").html(parsed_content.bandeau.value);
+        $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
+         
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){
+          document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
+        }, 10000);
+      },
+      error: function(result){
+        let parsed_content = JSON.parse(result);
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){
+          document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
+
+        }, 10000);
+      }
+    });
+  });
+
   // }).done(function(response){
   //         let data = JSON.stringify(response);
   //         elert(data);
