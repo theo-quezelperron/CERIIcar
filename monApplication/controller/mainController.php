@@ -123,6 +123,7 @@ class mainController
 
 	public static function detailCorres($request, $context){
 		$context->isLogged = false;
+		$context->session = $_SESSION;
 		if (isset($_SESSION)){$context->isLogged = true;}
 		$context->alerts = [];
 		if(isset($_GET["id_corres"])){
