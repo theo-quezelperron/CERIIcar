@@ -329,7 +329,7 @@ class mainController
             if( $dispo[0]['checkvoyagedispo'])
             {
 
-                $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+                $em = dbconnection::getInstance()->getEntityManager()->getConnection();
                 
 				$op = 'update jabaianb.voyage set nbplace = nbplace - ' . $_POST['nbplace'] . ' where id = ' . $_POST['id_voyage'] . ';';
 				$query = $em->prepare($op);
@@ -361,6 +361,11 @@ class mainController
 	}
 	public static function profil($request, $context){
 		if(isset($_SESSION)){$context->session = $_SESSION;}
+		$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+		$op = "SELECT * FROM jabaianb.reservation JOIN jabaianb.utilisateur AS a ON a.id=reservation.voyage JOIN jabaianb.voyage AS b ON b.id=reservation.voyage JOIN jabaianb.trajet AS c ON c.id=b.trajet WHERE voyageur = " . $context->getSessionAttribute('id') . ";";
+		$query = $em->prepare($op);
+		$bool = $query->execute();
+		$context->resa = $query->fetchAll();
 		return context::SUCCESS;
 	}
 }
