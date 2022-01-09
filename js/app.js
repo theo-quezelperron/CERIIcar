@@ -52,7 +52,8 @@ $("#btn_1").on("click", function(){
   });
 
   $('body').on('click', '.detail_corres', function () {
-    console.log("yeahhhh!!! but this doesn't work for me :(");
+    $(this).attr('id')
+    console.log($(this).attr('id'));
 });
   // }).done(function(response){
   //         let data = JSON.stringify(response);
