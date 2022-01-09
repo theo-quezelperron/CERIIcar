@@ -31,7 +31,7 @@ if (!is_null($context->voyages)){
       <td><?php echo $data["prenom"]; ?></td>
       <td><?php echo $data["contraintes"]; ?></td>
       <?php 
-      var_dump($_SESSION);
+      //var_dump($_SESSION);
       if(!empty($_SESSION["id"])){
           echo '<td><input class="reserverPlace" type="number" name="nbplace" value="1" min="1" max="100"></td>';
           echo '<td><button class="btn btn-primary reserver" id=' . $data["id"] . '">Réserver</button></td>';
