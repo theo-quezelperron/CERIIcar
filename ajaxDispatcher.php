@@ -20,6 +20,7 @@ $context->init($nameApp);
 
 $view=$context->executeAction($action, $_REQUEST);
 
+
 //traitement des erreurs de bases, reste a traiter les erreurs d'inclusion
 if($view===false)
 {
