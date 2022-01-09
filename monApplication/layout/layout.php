@@ -16,31 +16,56 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche" href="#">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Recherche</a>
         </li>
-        <li class="nav-item">
+        <?php if(!is_null($_SESSION["id"])){
+          echo '<li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=logout">Logout</a>
+        </li>
+        ';
+        }
+        else {
+          echo '<li class="nav-item">
+          <a class="nav-link" href="#">S\'enregistrer</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown link
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <form action="/monApplication.php?action=login" method="post">
+              <div class="mb-3">
+                <label for="exampleInputUser1" class="form-label">Nom d\'utilisateur</label>
+                <input type="text" class="form-control" id="exampleInputUser1" aria-describedby="userHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+              <button type="submit" class="btn btn-primary">Connection</button>
+            </form>
           </ul>
         </li>
+        ';
+        }
+        ?>
+        
       </ul>
     </div>
   </div>
