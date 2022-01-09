@@ -34,7 +34,7 @@ class voyageTable {
         }
         if (empty($query))
         {
-            return 0;
+            return -9999;
         }
         return $query->fetchAll();
     }
@@ -55,7 +55,7 @@ class voyageTable {
         }
         if (empty($query))
         {
-            return 0;
+            return -9999;
         }
         return $query->fetchAll(); // retourne un tableau d'enregistrements (tableau de tableaux de valeurs)
 
