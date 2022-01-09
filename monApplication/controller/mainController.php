@@ -252,4 +252,9 @@ class mainController
 			return context::ERROR;
 		}
     }
+
+	public static function ajouter($request,$context)
+	{
+		return context::SUCCESS;
+	}
 }
