@@ -208,7 +208,7 @@ class mainController
                 $_SESSION['prenom'] = $res['prenom'];
                 $_SESSION['identifiant'] = $res['identifiant'];
 				$context->alerts["Réussite"] = "Vous êtes connecté";
-				if (!empty($_SESSION["id"])){$context->isLogged = true;}
+				if (!empty($_SESSION['id'])){$context->isLogged = true;}
                 return context::SUCCESS;
             }
             $context->alerts["Alert"] = "Mot de passe/Pseudo incorrect!";
