@@ -1,8 +1,8 @@
 $("#btn_1").on("click", function(){
     console.log("clique");
-    var x = document.getElementById('isLogged');
-    console.log(x);
-    let urlString = "ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() + "&nbplace=" + $("#nbplace").val() + "&correspondance=" + ($("#correspondance").is(":checked") ? $("#correspondance").val() : 'false') + "&isLogged=" + x.dataset.value;
+    var y = document.getElementById('isLogged');
+    console.log(y);
+    let urlString = "ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() + "&nbplace=" + $("#nbplace").val() + "&correspondance=" + ($("#correspondance").is(":checked") ? $("#correspondance").val() : 'false') + "&isLogged=" + y.dataset.value;
     let test = $.ajax({
       url: urlString,
       method: "GET",
