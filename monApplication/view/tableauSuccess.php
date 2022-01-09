@@ -59,7 +59,7 @@ if (!is_null($context->voyages)){
            ';    
     foreach( $context->voyages as $data ): ?>
     <tr>
-    <th scope="row">1</th>
+    <th scope="row"><span id='id_trajet'><?php echo $data["id"]; ?></span></th>
       <td><?php echo $data["depart"]; ?></td>
       <td><?php echo $data["arrivee"]; ?></td>
       <td><?php echo $data["distance"]; ?></td>
