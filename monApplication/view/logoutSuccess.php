@@ -1,1 +1,3 @@
-<?php header("https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=index");
+<?php 
+echo 'Au revoir!';
+header("https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=index");
