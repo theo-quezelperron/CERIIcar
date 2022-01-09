@@ -135,8 +135,7 @@ class mainController
 				$context->corres_info = $query->fetchAll();
 			}
 			$context->corres_info = str_replace("{", "(", $context->corres_info[0]["array_agg"]);
-				$context->corres_info = str_replace("}", ")", $context->corres_info);
-			return context::SUCCESS;
+			$context->corres_info = str_replace("}", ")", $context->corres_info);
 			if(!is_null($context->corres_info)){
 				$i = count($context->corres_info);
 				switch ($i){
@@ -150,7 +149,7 @@ class mainController
 						$context->alerts["Réussite"] = "Détails correctement récupérés";
 						break;
 				}
-				$op1 = 'SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE voyage.id IN (195, 90);';
+				$op1 = 'SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE voyage.id IN '. $context->corres_info .';';
 				$query1 = $em->prepare($op1);
 				$query1->execute();
 				if(empty($query1)){
