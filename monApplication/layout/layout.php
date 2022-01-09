@@ -23,13 +23,12 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche" href="#">Accueil</a>
+          <a class="nav-link" aria-current="monApplication.php?action=recherche" href="#">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Recherche</a>
+          <a class="nav-link" href="monApplication.php?action=recherche">Recherche</a>
         </li>
-        <?php if(!isset($_SESSION["id"])){
-          var_dump($_SESSION);
+        <?php if($_SESSION == []){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Ajouter un voyage</a>
         </li>
