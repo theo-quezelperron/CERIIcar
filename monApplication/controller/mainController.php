@@ -228,20 +228,27 @@ class mainController
 
 	public static function signin($request,$context)
     {
-        if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
-        {
-            //Création de l'utilisateur si l'identifiant n'est pas attribué
-            $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-            $op = 'INSERT INTO jabaianb.utilisateur (identifiant, pass, nom, prenom) VALUES (' . $_POST["pseudo"] . ', ' . sha1($_POST["pseudo"]) . ', ' . $_POST["nom"] . ', ' . $_POST["prenom"] . ');';
-            $query = $em->prepare($op);
-            $bool = $query->execute();
-			$context->alerts["Réussite"] = "Vous vous êtes enregistré, veuillez vous connecter maintenant!";
-            return context::SUCCESS;
-        }
+		if(isset($_POST['pseudo']) && isset($_POST['pass']) && isset($_POST['nom']) && isset($_POST['prenom']))
+		{
+			if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
+			{
+				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+				$op = 'INSERT INTO jabaianb.utilisateur (identifiant, pass, nom, prenom) VALUES (' . $_POST["pseudo"] . ', ' . sha1($_POST["pseudo"]) . ', ' . $_POST["nom"] . ', ' . $_POST["prenom"] . ');';
+				$query = $em->prepare($op);
+				$bool = $query->execute();
+				$context->alerts["Réussite"] = "Vous vous êtes enregistré, veuillez vous connecter maintenant!";
+				return context::SUCCESS;
+			}
+			else
+			{
+				$context->alerts["Warning"] = "Identifiant déjà pris !";
+				return context::ERROR;
+			}
+		}
         else
-        {
-            $context->error = "Cet identifiant est déjà pris !";
-            return context::ERROR;
-        }
+		{
+			$context->alerts["Warning"] = "Formulaire non valide, veuillez réessayer!";
+			return context::ERROR;
+		}
     }
 }
