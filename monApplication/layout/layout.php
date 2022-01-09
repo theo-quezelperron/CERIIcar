@@ -29,7 +29,6 @@
           <a class="nav-link" href="monApplication.php?action=recherche">Recherche</a>
         </li>
         <?php
-        var_dump($_SESSION);
         if(!empty($_SESSION)){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Ajouter un voyage</a>
@@ -44,7 +43,7 @@
         }
         else {
           echo '<li class="nav-item">
-          <a class="nav-link" href="#">S\'enregistrer</a>
+          <a class="nav-link" href="monApplication.php?action=signin">S\'enregistrer</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
