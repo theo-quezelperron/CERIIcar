@@ -381,7 +381,7 @@ class mainController
 	public static function ajouterValide($request,$context)
     {
         $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-        $op = 'SELECT * FROM jabaianb.trajet WHERE depart = ' . $_POST['depart'] .' AND arrivee = .' . $_POST['arrivee'] . ';';
+        $op = 'SELECT * FROM jabaianb.trajet WHERE depart = ' . $_POST['depart'] .' AND arrivee = ' . $_POST['arrivee'] . ';';
         $query = $em->prepare($op);
         $bool = $query->execute();
         $res = $query->fetch(PDO::FETCH_ASSOC);
