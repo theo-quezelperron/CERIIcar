@@ -109,7 +109,7 @@ class mainController
 			}
 
 
-			if(is_null($context->correspondance))
+			if(is_null($context->correspondance) || is_null($context->voyage))
 			{
 				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 				return context::ERROR;
