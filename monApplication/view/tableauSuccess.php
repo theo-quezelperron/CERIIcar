@@ -15,7 +15,13 @@
         </thead>
         <tbody>
                ';
-               echo '</br>';    
+    echo '</br>';
+    echo '<div class="collapse" id="collapseExample">
+                <div class="card card-body collapsed-content">
+                    <div id="htmlContent">
+                    </div>
+                </div>
+            </div>';
         foreach( $context->correspondance_info as $data ): ?>
         <tr>
         <th scope="row"><span id='id_corres'><?php echo $data["id"]; ?></span></th>
@@ -27,12 +33,6 @@
           <td><?php echo $data["nb_voyage"]; ?></td>
           <td><button class="btn btn-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?> data-bs-toggle="collapse" href="#collapseExample" type="button" role="button" aria-expanded="false" aria-controls="collapseExample">+ infos</button>
         </tr>
-        <div class="collapse" id="collapseExample">
-			<div class="card card-body collapsed-content">
-				<div id="htmlContent">
-				</div>
-			</div>
-		</div>
         <?php endforeach ?>
         </tbody>
     </table>    
