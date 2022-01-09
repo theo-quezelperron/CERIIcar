@@ -16,9 +16,7 @@
         </thead>
         <tbody>
                ';
-               var_dump($context->info1);
-               echo '</br>';
-               var_dump($context->info2);
+               var_dump($context->correspondance_info);
                echo '</br>';    
         foreach( $context->correspondance as $data ): ?>
         <tr>
