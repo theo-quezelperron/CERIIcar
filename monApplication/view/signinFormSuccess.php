@@ -9,7 +9,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Prénom</label>
-        <input type="text" class="form-control" id="prénom" name="prénom" aria-describedby="userHelp">
+        <input type="text" class="form-control" id="prenom" name="prenom" aria-describedby="userHelp">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
