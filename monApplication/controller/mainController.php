@@ -273,6 +273,12 @@ class mainController
 
 	public static function ajouter($request,$context)
 	{
+		$context->title = "Recherchez votre voyage !";
+		//Fonction permettant de peupler les select fields
+		$context->villes = trajetTable::getAllVilles();
+		if($context->getSessionAttribute('id')){$context->isLogged = true;}
+		else {$context->isLogged = false;}
+        return context::SUCCESS;
 		return context::SUCCESS;
 	}
 
@@ -359,6 +365,8 @@ class mainController
 		$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 		return context::ERROR;
 	}
+
+
 	public static function profil($request, $context){
 		if(isset($_SESSION)){$context->session = $_SESSION;}
 		$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
@@ -368,4 +376,22 @@ class mainController
 		$context->resa = $query->fetchAll();
 		return context::SUCCESS;
 	}
+
+	public static function ajouterValide($request,$context)
+    {
+        $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+        $op = 'SELECT * FROM jabaianb.trajet WHERE depart = ? AND arrivee = ?';
+        $query = $em->prepare($op);
+        $bool = $query->execute(array($_POST['depart'], $_POST['arrivee']));
+        $res = $query->fetch(PDO::FETCH_ASSOC);
+
+        $tarif = $res['distance']*$_POST['tarif'];
+
+        $op2 = 'INSERT INTO jabaianb.voyage (conducteur, trajet, tarif, nbplace, heuredepart, contraintes) VALUES (?, ?, ?, ?, ?, ?)';
+        $query2 = $em->prepare($op2);
+        $bool2 = $query2->execute(array($_SESSION['id'], $res['id'], $tarif, $_POST['nbplace'], $_POST['hdepart'], $_POST['contrainte']));
+
+        return context::SUCCESS;
+
+    }
 }

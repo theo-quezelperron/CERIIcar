@@ -16,7 +16,7 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-    <a class="navbar-brand" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Navbar</a>
+    <a class="navbar-brand" href="monApplication.php?action=index">CERICAR</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,7 +31,7 @@
         <?php
         if(!empty($_SESSION)){
           echo '<li class="nav-item">
-          <a class="nav-link" href="#">Ajouter un voyage</a>
+          <a class="nav-link" href="monApplication.php?action=ajouter">Ajouter un voyage</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="monApplication.php?action=profil">Profil</a>
