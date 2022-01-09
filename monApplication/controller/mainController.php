@@ -203,6 +203,7 @@ class mainController
             $res = $query->fetch(PDO::FETCH_ASSOC);
             if(strcmp(sha1($_POST['cpass']), $res['pass']) == 0)
             {
+				if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}
                 $_SESSION['id'] = $res['id'];
                 $_SESSION['nom'] = $res['nom'];
                 $_SESSION['prenom'] = $res['prenom'];
@@ -222,6 +223,7 @@ class mainController
 	{
 		$context->isLogged = false;
 		session_destroy();
+		unset($_SESSION);
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";
 		return context::SUCCESS;
 	}
@@ -259,6 +261,11 @@ class mainController
 
 	public static function ajouter($request,$context)
 	{
+		return context::SUCCESS;
+	}
+
+	public static function profil($request, $context){
+		if(isset($_SESSION)){$context->session = $_SESSION;}
 		return context::SUCCESS;
 	}
 }
