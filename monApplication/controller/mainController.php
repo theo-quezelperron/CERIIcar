@@ -246,6 +246,7 @@ class mainController
 
 	public static function signin($request,$context)
     {
+		$context->title = "Rejoignez-nous !";
 		$context->alerts = [];
 		if((isset($_POST['pseudo']) && $_POST['pseudo'] != "") && (isset($_POST['pass']) && $_POST['pass'] != "") && (isset($_POST['nom']) && $_POST['nom'] != "") && (isset($_POST['prenom']) && $_POST['prenom'] != ""))
 		{
@@ -273,7 +274,7 @@ class mainController
 
 	public static function ajouter($request,$context)
 	{
-		$context->title = "Recherchez votre voyage !";
+		$context->title = "Ajouter votre voyage !";
 		//Fonction permettant de peupler les select fields
 		$context->villes = trajetTable::getAllVilles();
 		if($context->getSessionAttribute('id')){$context->isLogged = true;}

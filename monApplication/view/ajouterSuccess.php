@@ -28,6 +28,6 @@
         <label for="exampleInputUser1" class="form-label">Contraintes</label>
         <input type="text" class="form-control" id="contrainte" name="contrainte" aria-describedby="userHelp">
     </div>
+    <button class="btn btn-primary" type="submit">Ajouter</button>
 </form>
-<button class="btn btn-primary">Ajouter</button>
 </div>
