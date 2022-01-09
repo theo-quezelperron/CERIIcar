@@ -1,5 +1,5 @@
 <div id="htmlResult">
-<form action="monApplication.php">
+<form action="monApplication.php" method="post">
 <div class="mb-3">
     <label for="depart">ville de départ: </label>
         <select class="form-select" id="depart" name="depart" required>
