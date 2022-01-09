@@ -84,6 +84,7 @@ class mainController
 				}
 				else {
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+					return context::ERROR;
 				}
             }
 			else{
@@ -105,15 +106,16 @@ class mainController
 				}
 				else {
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+					return context::ERROR;
 				}
 			}
 
 
-			if(is_null($context->correspondance) || is_null($context->voyage))
-			{
-				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
-				return context::ERROR;
-			}
+			// if(is_null($context->correspondance) || is_null($context->voyage))
+			// {
+			// 	$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+			// 	return context::ERROR;
+			// }
 
 			return context::SUCCESS;
 			}
