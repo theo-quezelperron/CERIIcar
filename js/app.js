@@ -105,53 +105,54 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.enregistrement', function () {
     $(this).attr('id')
     console.log($(this));
-    console.log($("#enregistrement")[0][0]);
-    // let urlString = "ajaxDispatcher.php?action=signin?pseudo=" + $("#enregistrement");
-    // let test = $.ajax({
-    //   url: urlString,
-    //   method: "GET",
-    //   processData: false,
-    //   contentType: false,
-    //   success: function(result){
-    //     console.log(result);
-    //     let parsed_content = JSON.parse(result);
-    //     $("#htmlContent").html(parsed_content.corps);
-    //     switch (parsed_content.bandeau.class) {
-    //       case "Alerte":
-    //         $("#bandeau").removeClass();
-    //         $("#bandeau").addClass("alert alert-danger fade show");
-    //         break;
-    //       case "Warning":
-    //         $("#bandeau").removeClass();
-    //         $("#bandeau").addClass("alert alert-warning fade show");
-    //         break;
-    //       case "Réussite":
-    //         $("#bandeau").removeClass();
-    //         $("#bandeau").addClass("alert alert-success fade show");
-    //         break;
-    //       default :
-    //         $("#bandeau").removeClass();
-    //         $("#bandeau").addClass("alert alert-primary fade show");
-    //         break;
-    //     }
-    //     $("#bandeau").html(parsed_content.bandeau.value);
-    //     $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
+    console.log($("#enregistrement")[0][0].val());
+    let urlString = "ajaxDispatcher.php?action=signin";
+    let test = $.ajax({
+      url: urlString,
+      method: "POST",
+      data: { pseudo: $("#enregistrement")[0][0].val(), nom: $("#enregistrement")[0][1].val(), prennom: $("#enregistrement")[0][2].val(), pass: $("#enregistrement")[0][3].val()},
+      processData: false,
+      contentType: false,
+      success: function(result){
+        console.log(result);
+        let parsed_content = JSON.parse(result);
+        $("#htmlContent").html(parsed_content.corps);
+        switch (parsed_content.bandeau.class) {
+          case "Alerte":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-danger fade show");
+            break;
+          case "Warning":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-warning fade show");
+            break;
+          case "Réussite":
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-success fade show");
+            break;
+          default :
+            $("#bandeau").removeClass();
+            $("#bandeau").addClass("alert alert-primary fade show");
+            break;
+        }
+        $("#bandeau").html(parsed_content.bandeau.value);
+        $("#bandeau").append('<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>');
          
-    //     document.getElementsByClassName("alert")[0].style.display = "block";
-    //     setTimeout(function(){
-    //       document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-    //     }, 10000);
-    //   },
-    //   error: function(result){
-    //     let parsed_content = JSON.parse(result);
-    //     $("#htmlResult").html(parsed_content.corps);
-    //     document.getElementsByClassName("alert")[0].style.display = "block";
-    //     setTimeout(function(){
-    //       document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){
+          document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
+        }, 10000);
+      },
+      error: function(result){
+        let parsed_content = JSON.parse(result);
+        $("#htmlResult").html(parsed_content.corps);
+        document.getElementsByClassName("alert")[0].style.display = "block";
+        setTimeout(function(){
+          document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
 
-    //     }, 10000);
-    //   }
-    // });
+        }, 10000);
+      }
+    });
   });
 
   // }).done(function(response){
