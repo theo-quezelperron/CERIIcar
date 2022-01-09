@@ -40,7 +40,7 @@
     </table>    
 <?php }?>
 <?php
-if (!is_null($context->voyage)){
+if (!is_null($context->voyages)){
     echo '
     <table class="table">
     <thead>
