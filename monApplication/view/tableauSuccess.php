@@ -8,8 +8,7 @@
                 <th scope="col">Heure d\'arrivée</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Durée</th>
-                <th scope="col">Tarif total</th>
-                <th scope="col">Heure d\'attente</th>
+                <th scope="col">Heure d\'attente</th> 
                 <th scope="col">Nombre de voyages</th>
             </tr>
         </thead>
