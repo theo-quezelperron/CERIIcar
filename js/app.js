@@ -54,7 +54,23 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.detail_corres', function () {
     $(this).attr('id')
     console.log($(this).attr('id'));
-});
+    let urlString = "ajaxDispatcher.php?action=detailCorres?id_corres=" + $(this).attr('id');
+    let test = $.ajax({
+      url: urlString,
+      method: "GET",
+      processData: false,
+      contentType: false,
+      success: function(result){
+        console.log(result);
+        let parsed_content = JSON.parse(result);
+        $("#htmlContent").html(parsed_content.corps);
+      },
+      error: function(result){
+        let parsed_content = JSON.parse(result);
+        $("#htmlResult").html(parsed_content.corps);
+      }
+    });
+  });
   // }).done(function(response){
   //         let data = JSON.stringify(response);
   //         elert(data);
@@ -65,4 +81,3 @@ $("#btn_1").on("click", function(){
   //     .fail(function(error){
   //         alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
   //     });
-  

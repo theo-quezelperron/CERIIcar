@@ -120,4 +120,70 @@ class mainController
 		return context::ERROR;
 		}
 	}
+
+	public function detailCorres($request, $context){
+		if(isset($_GET["id_corres"])){
+			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+			//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
+			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_GET["id_corres"] .';';
+			$query = $em->prepare($op);
+			$query->execute();
+			if(empty($query)){
+				$context->corres_info = -9999;
+			}
+			else {
+				$context->corres_info = $query->fetchAll();
+			}
+			return context::SUCCESS;
+			if(!is_null($context->corres_info)){
+				$i = count($context->corres_info);
+				switch ($i){
+					case null:
+						$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+						break;
+					case -9999:
+						$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+						break;
+					default:
+						$context->alerts["Réussite"] = "Détails correctement récupérés";
+						break;
+				}
+				$op1 = 'SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE voyage.id IN (195, 90);';
+				$query1 = $em->prepare($op1);
+				$query1->execute();
+				if(empty($query1)){
+					$context->voyages = -9999;
+				}
+				else {
+					$context->voyages = $query->fetchAll();
+				}
+				if(!is_null($context->voyages)){
+					$i = count($context->voyages);
+					switch ($i){
+						case null:
+							$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+							break;
+						case -9999:
+							$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
+							break;
+						default:
+							$context->alerts["Réussite"] = "Détails correctement récupérés";
+							break;
+					}
+				}
+				else {
+					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+					return context::ERROR;
+				}
+			}
+			else {
+				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+				return context::ERROR;
+			}
+			
+		}
+		else{
+			return context::ERROR;
+		}
+	}
 }
