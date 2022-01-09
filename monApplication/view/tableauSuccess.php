@@ -4,12 +4,12 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Départ</th>
-                <th scope="col">Arrivée</th>
+                <th scope="col">Heure de départ</th>
+                <th scope="col">Heure d\'arrivée</th>
                 <th scope="col">Prix</th>
-                <th scope="col">duree</th>
+                <th scope="col">Durée</th>
                 <th scope="col">Tarif total</th>
-                <th scope="col">Attente</th>
+                <th scope="col">Heure d\'attente</th>
                 <th scope="col">Nombre de voyages</th>
             </tr>
         </thead>
@@ -19,13 +19,13 @@
         foreach( $context->correspondance_info as $data ): ?>
         <tr>
         <th scope="row"><span id='id_corres'><?php echo $data["id"]; ?></span></th>
-          <td><?php echo $data["depart"]; ?></td>
-          <td><?php echo $data["arrivee"]; ?></td>
-          <td><?php echo $data["prix"]; ?></td>
-          <td><?php echo $data["duree"]; ?></td>
-          <td><?php echo $data["attente"]; ?></td>
+          <td><?php echo $data["depart"]; ?>H00</td>
+          <td><?php echo $data["arrivee"]; ?>H00</td>
+          <td><?php echo $data["prix"]; ?>€</td>
+          <td><?php echo $data["duree"]; ?>H00</td>
+          <td><?php echo $data["attente"]; ?>H00</td>
           <td><?php echo $data["nb_voyage"]; ?></td>
-          <td><button classs="button button-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
+          <td><button class="button button-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?>>+ infos</button>
         </tr>
         <?php endforeach ?>
         </tbody>
