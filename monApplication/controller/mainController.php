@@ -53,9 +53,23 @@ class mainController
             {
                 $correspondance = 1;
 				$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-				$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+				//$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id);
+				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+        		$op = 'SELECT * FROM jabaianb.voyage WHERE trajet = '. $context->trajet->id .' AND nbplace > '. $_GET['nbplace'] .' ORDER BY depart ASC';
+        		$query = $em->prepare($op);
+        		$bool = $query->execute();
+				if ($bool == false){
+					$context->voyages = null;
+				}
+				else if (empty($query))
+					{
+						$context->voyages = 9999;
+				}
+				else {
+					$context->voyages = $query->fetchAll();
+				}
 				if(!is_null($context->voyage)){
-					$i = count($context->correspondance);
+					$i = count($context->voyage);
 					switch ($i){
 						case null:
 							$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
