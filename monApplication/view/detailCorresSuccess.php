@@ -14,6 +14,8 @@ if (!is_null($context->voyages)){
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Contraintes</th>
+            ';
+            if($context->session){ echo '<th scope="col">Place</th>';} echo '
         </tr>
     </thead>
     <tbody>
