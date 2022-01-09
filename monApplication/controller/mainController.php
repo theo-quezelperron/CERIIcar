@@ -177,6 +177,7 @@ class mainController
 					$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
 					return context::ERROR;
 				}
+				return context::SUCCESS;
 			}
 			else {
 				$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
