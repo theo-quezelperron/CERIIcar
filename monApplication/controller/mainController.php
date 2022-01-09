@@ -229,7 +229,7 @@ class mainController
 	public static function signin($request,$context)
     {
 		$context->alerts = [];
-		if(isset($_POST['pseudo']) && isset($_POST['pass']) && isset($_POST['nom']) && isset($_POST['prenom']))
+		if((isset($_POST['pseudo']) && $_POST['pseudo'] != "") && (isset($_POST['pass']) && $_POST['pass'] != "") && (isset($_POST['nom']) && $_POST['nom'] != "") && (isset($_POST['prenom']) && $_POST['prenom'] != ""))
 		{
 			if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
 			{
