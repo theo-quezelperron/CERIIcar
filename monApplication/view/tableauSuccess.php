@@ -41,6 +41,7 @@
 <?php }?>
 <?php
 if (!is_null($context->voyages)){
+    var_dump($context->voyages);
     echo '
     <table class="table">
     <thead>
