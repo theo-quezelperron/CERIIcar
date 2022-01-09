@@ -25,6 +25,10 @@
         <input class="reserverPlace" type="number" name="hdepart" value="1" min="1" max="24">
     </div>
     <div class="mb-3">
+        <label for="exampleInputUser1" class="form-label">Tarif</label>
+        <input class="reserverPlace" type="number" name="tarif" value="10" min="1" max="500">
+    </div>
+    <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Contraintes</label>
         <input type="text" class="form-control" id="contrainte" name="contrainte" aria-describedby="userHelp">
     </div>
