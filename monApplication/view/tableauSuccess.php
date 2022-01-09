@@ -33,7 +33,7 @@
           <td><button class="btn btn-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?> data-bs-toggle="collapse" href="#collapseExample" type="button" role="button" aria-expanded="false" aria-controls="collapseExample">+ infos</button>
           <?php 
             if($context->session){
-                echo '<td><button class="btn btn-primary reserverG" data-value=' . $data["id"] . '">Réserver</button></td>';
+                echo '<td><button class="btn btn-primary reserverG" id="reser' . $data["id"] . '" data-value=' . $data["id"] . '">Réserver</button></td>';
             }?> 
         </tr>
         <?php endforeach ?>

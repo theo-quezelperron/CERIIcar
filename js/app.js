@@ -159,8 +159,8 @@ $('body').on("click", '#btn_1', function(){
   });
 
   $('body').on('click', '.reserverG', function () {
-    $(this).attr('data-value')
-    console.log($(this));
+    console.log(this.dataset.value);
+    console.log(this[0].dataset.value);
     console.log($("#nbplace").val());
     let urlString = "ajaxDispatcher.php?action=reserverG";
     let test = $.ajax({
