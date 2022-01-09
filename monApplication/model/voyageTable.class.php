@@ -104,11 +104,7 @@ class voyageTable {
         $query_str = "select * from checkVoyageDispo( $id, $nbp );";
         $query = $em->prepare($query_str);
         $query->execute();
-        
-        if (empty($query))
-        {
-            return null;
-        }
+    
         return $query->fetchAll();
     }
 
