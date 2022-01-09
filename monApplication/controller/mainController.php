@@ -317,7 +317,7 @@ class mainController
     	}
 	}
 
-	public static function reserverS($request, $context){
+	public static function reserverSolo($request, $context){
 		if(isset($_GET["id_voyage"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_POST["id_voyage"] .';';

@@ -215,7 +215,7 @@ $('body').on("click", '#btn_1', function(){
     let z = this.dataset.value;
     z = z.slice(0, -1);
     console.log($("#nbplace").val());
-    let urlString = "ajaxDispatcher.php?action=reserverS";
+    let urlString = "ajaxDispatcher.php?action=reserverSolo";
     let test = $.ajax({
       url: urlString,
       method: "POST",
