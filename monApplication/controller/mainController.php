@@ -320,7 +320,6 @@ class mainController
 	public static function reserverSolo($request, $context){
 		if(isset($_POST["id_voyage"])){
 
-			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 			if(isset($_POST['id_voyage']) and isset($_POST['nbplace']))
         	{
             $dispo = voyageTable::checkVoyageDispo( $_POST['id_voyage'], $_POST['nbplace']);
@@ -329,12 +328,10 @@ class mainController
 
             if( $dispo[0]['checkvoyagedispo'])
             {
-                $voyages = voyageTable::getVoyagesById( $_POST['id_voyage'] );
 
                 $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-
                 
-				$op = 'update jabaianb.voyage set nbplace = nbplace - ' . $_POST['nbplace'] . ' where id = ' . $voyages . ';';
+				$op = 'update jabaianb.voyage set nbplace = nbplace - ' . $_POST['nbplace'] . ' where id = ' . $_POST['id_voyage'] . ';';
 				$query = $em->prepare($op);
 				$bool = $query->execute();
 
@@ -344,7 +341,7 @@ class mainController
 				$res = $query->fetch(PDO::FETCH_ASSOC);
 				$newID = $res['id'];
 
-				$op = 'insert into jabaianb.reservation values (' .$newID .', '.$voyages.', '.$_SESSION['id'].');';
+				$op = 'insert into jabaianb.reservation values (' . $newID  . ', ' . $_POST['id_voyage'] . ', ' . $_SESSION['id'] . ');';
 				$query = $em->prepare($op);
 				$bool = $query->execute();
 			
