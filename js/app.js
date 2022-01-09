@@ -54,7 +54,8 @@ $("#btn_1").on("click", function(){
   $('body').on('click', '.detail_corres', function () {
     $(this).attr('id')
     console.log($(this).attr('id'));
-    let urlString = "ajaxDispatcher.php?action=detailCorres&id_corres=" + $(this).attr('id') + "&isLogged=" + $("#isLogged").val();
+    console.log($("#isLogged"));
+    let urlString = "ajaxDispatcher.php?action=detailCorres&id_corres=" + $(this).attr('id') + "&isLogged=" + $("#isLogged");
     let test = $.ajax({
       url: urlString,
       method: "GET",
