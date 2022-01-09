@@ -49,7 +49,7 @@ elseif($view!=context::NONE)
             'value' => $context->alerts[array_key_first($context->alerts)]
         ];
         }
-    $context->session = $_SESSION;
+    
     ob_start();
     include($nameApp."/view/".$action.$view.".php");
     $response_array['corps'] = ob_get_contents();
