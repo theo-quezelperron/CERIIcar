@@ -29,7 +29,7 @@
           <td><?php echo $data["arrivee"]; ?>H00</td>
           <td><?php echo $data["prix"]; ?>€</td>
           <td><?php echo $data["duree"]; ?>H00</td>
-          <td><?php echo $data["attente"]; ?>H00</td>
+          <td class="text-center"><?php echo $data["attente"]; ?>H00</td>
           <td><?php echo $data["nb_voyage"]; ?></td>
           <td><button class="btn btn-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?> data-bs-toggle="collapse" href="#collapseExample" type="button" role="button" aria-expanded="false" aria-controls="collapseExample">+ infos</button>
         </tr>
