@@ -54,7 +54,7 @@ $("#btn_1").on("click", function(){
   var elements = document.getElementsByClassName("detail_corres");
 
   var myfunction = function(){
-    console.log(this);
+    console.log("this");
   }
 
   for (var i = 0; i < elements.length; i++) {
