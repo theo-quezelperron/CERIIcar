@@ -33,7 +33,7 @@ if (!is_null($context->voyages)){
       <?php 
       var_dump($context->isLogged);
       var_dump($context->session);
-      if($context->isLogged == true){
+      if($context->getSessionAttribute('id')){
           echo '<td><input class="reserverPlace" type="number" name="nbplace" value="1" min="1" max="100"></td>';
           echo '<td><button class="btn btn-primary reserver" id=' . $data["id"] . '">Réserver</button></td>';
       }?>    
