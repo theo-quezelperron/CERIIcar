@@ -28,7 +28,7 @@
         <li class="nav-item">
           <a class="nav-link" href="https://pedago.univ-avignon.fr/~uapv1801268/CERIIcar/monApplication.php?action=recherche">Recherche</a>
         </li>
-        <?php if(!is_null($_SESSION["id"])){
+        <?php if(!isset($_SESSION["id"])){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>
