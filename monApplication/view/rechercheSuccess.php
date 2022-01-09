@@ -20,6 +20,7 @@
     </select>
   </div>
   <div class="mb-3">
+    <label for="nbplace">Nombre de places: </label>
     <select class="form-select" id="nbplace" name="nbplace" required>
       <option value="1" selected>1</option>
       <option value="2">2</option>

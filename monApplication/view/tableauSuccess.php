@@ -31,6 +31,10 @@
           <td class="text-center"><?php echo $data["attente"]; ?>H00</td>
           <td><?php echo $data["nb_voyage"]; ?></td>
           <td><button class="btn btn-primary detail_corres" id=<?php echo'"'.$data["id"].'"';?> data-bs-toggle="collapse" href="#collapseExample" type="button" role="button" aria-expanded="false" aria-controls="collapseExample">+ infos</button>
+          <?php 
+            if($context->session){
+                echo '<td><button class="btn btn-primary reserverG" data-value=' . $data["id"] . '">Réserver</button></td>';
+            }?> 
         </tr>
         <?php endforeach ?>
         </tbody>
