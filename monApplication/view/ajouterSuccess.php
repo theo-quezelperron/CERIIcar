@@ -18,7 +18,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Nombre de places</label>
-        <input class="reserverPlace" type="number" name="nbplce" value="1" min="1" max="100">
+        <input class="reserverPlace" type="number" name="nbplace" value="1" min="1" max="100">
     </div>
     <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Heure de départ</label>
