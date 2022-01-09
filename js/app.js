@@ -219,7 +219,7 @@ $('body').on("click", '#btn_1', function(){
     let test = $.ajax({
       url: urlString,
       method: "POST",
-      data: { id_corres: z, nbplace: $(".reserverPlace").val()},
+      data: { id_voyage: z, nbplace: $(".reserverPlace").val()},
       //processData: false,
       //contentType: false,
       success: function(result){

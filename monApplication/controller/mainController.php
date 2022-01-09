@@ -365,8 +365,12 @@ class mainController
 				$context->alerts["Warning"] = "Enregistrement impossible!";
                 return context::SUCCESS;
         	}
+			$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+			return context::ERROR;
     		}
 		}
+		$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
+		return context::ERROR;
 	}
 	public static function profil($request, $context){
 		if(isset($_SESSION)){$context->session = $_SESSION;}
