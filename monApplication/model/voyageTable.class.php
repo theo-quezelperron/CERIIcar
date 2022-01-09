@@ -104,11 +104,7 @@ class voyageTable {
         $query_str = "select * from checkCorresDispo( $id, $nbp );";
         $query = $em->prepare($query_str);
 
-        $bool = $query->execute();
-        if ($bool == false)
-        {
-            return NULL;
-        }
+        
         if (empty($query))
         {
             return null;
