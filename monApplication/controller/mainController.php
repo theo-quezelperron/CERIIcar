@@ -57,19 +57,16 @@ class mainController
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
         		$op = 'SELECT * FROM jabaianb.voyage WHERE trajet = ' . $context->trajet->id . ' AND nbplace >= ' . $_GET['nbplace'];
         		$query = $em->prepare($op);
-        		$bool = $query->execute();
-				if ($bool == false){
-					$context->voyages = null;
-				}
-				if(empty($query))
-					{
-						$context->voyages = 9999;
+        		$query->execute();
+				
+				if(empty($query)){
+					$context->voyages = 9999;
 				}
 				else {
 					$context->voyages = $query->fetchAll();
 				}
-				if(!is_null($context->voyage)){
-					$i = count($context->voyage);
+				if(!is_null($context->voyages)){
+					$i = count($context->voyages);
 					switch ($i){
 						case null:
 							$context->alerts["Alerte"] = "Erreur rencontré avec la requête!";
@@ -78,7 +75,7 @@ class mainController
 							$context->alerts["Warning"] = "Aucun voyage disponible sur ce trajet!";
 							break;
 						default:
-							$context->alerts["Réussite"] = count($context->voyage) > 1 ? count($context->voyage) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
+							$context->alerts["Réussite"] = count($context->voyages) > 1 ? count($context->voyages) . " voyages disponibles!" : count($context->voyages) . " voyage disponible!";
 							break;
 					}
 				}
