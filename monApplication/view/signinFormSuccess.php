@@ -18,4 +18,4 @@
 </form>
 <button class="btn btn-primary enregistrement">S'enregistrer</button>
 </br>
-<div class="htmlResult"></div>
+<div id="htmlResult"></div>
