@@ -160,13 +160,12 @@ $('body').on("click", '#btn_1', function(){
 
   $('body').on('click', '.reserverG', function () {
     console.log(this.dataset.value);
-    console.log(this[0].dataset.value);
     console.log($("#nbplace").val());
     let urlString = "ajaxDispatcher.php?action=reserverG";
     let test = $.ajax({
       url: urlString,
       method: "POST",
-      data: { id_corres: $(this).attr('id'), nbplace: $("#nbplace").val()},
+      data: { id_corres: this.dataset.value, nbplace: $("#nbplace").val()},
       //processData: false,
       //contentType: false,
       success: function(result){
