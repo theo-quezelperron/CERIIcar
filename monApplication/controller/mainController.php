@@ -327,6 +327,7 @@ class mainController
 
 	//Voir réserverG, fonoctionnement identique sans foreach
 	public static function reserverSolo($request, $context){
+		$context->alerts = [];
 		if(isset($_POST["id_voyage"])){
 
 			if(isset($_POST['id_voyage']) and isset($_POST['nbplace']))
