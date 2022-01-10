@@ -42,16 +42,17 @@ class mainController
         return context::SUCCESS;
     }
 
+	
 	public static function tableau($request, $context){
-		$context->session = false;
+		$context->session = false; //Workaround bug session et ob_start()
 		if(isset($_GET["isLogged"])){
 			if ($_GET["isLogged"]){
 				$context->session = true;
 			}
 		}
         if (isset($_GET['depart']) && isset($_GET['arrivee']) && isset($_GET['nbplace'])){
-			$correspondance = 999;
-			$context->alerts = [];
+			$correspondance = 999;//Arbitraire, variable écrite en plpgsql.
+			$context->alerts = [];//Permet de générer une notification lors du retour
 			$context->vDep  = $_GET['depart'];
 			$context->vArr  = $_GET['arrivee'];
 			$context->nbp   = $_GET['nbplace'];
@@ -59,17 +60,16 @@ class mainController
 			
 			if($_GET['correspondance'] == "false")
             {
-                $correspondance = 1;
+                $correspondance = 1;//Fix à un
 				$context->trajet = trajetTable::getTrajet( $_GET['depart'],$_GET['arrivee']);
-				//$context->voyages = voyageTable::getVoyagesByTrajet($context->trajet->id); <- ne fonctionne pas correctement avec la table
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-				//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
-        		$op = 'SELECT voyage.id AS voyage_id, voyage.conducteur AS voyage_conducteur, voyage.trajet AS voyage_trajet, voyage.tarif AS voyage_tarif, voyage.nbplace AS voyage_nbplace, voyage.heuredepart AS voyage_heuredepart, voyage.contraintes AS voyage_contraintes, a.*, b.* FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = ' . $context->trajet->id . ' AND nbplace >= ' . $_GET['nbplace'];
+				//Permet de récupérer toutes les infos nécessaires pour le display
+				$op = 'SELECT voyage.id AS voyage_id, voyage.conducteur AS voyage_conducteur, voyage.trajet AS voyage_trajet, voyage.tarif AS voyage_tarif, voyage.nbplace AS voyage_nbplace, voyage.heuredepart AS voyage_heuredepart, voyage.contraintes AS voyage_contraintes, a.*, b.* FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = ' . $context->trajet->id . ' AND nbplace >= ' . $_GET['nbplace'];
         		$query = $em->prepare($op);
         		$query->execute();
 				
 				if(empty($query)){
-					$context->voyages = -9999;
+					$context->voyages = -9999;//Valeur impossible != 0 permet de définir qu'aucun voyage n'a été trouvé
 				}
 				else {
 					$context->voyages = $query->fetchAll();
@@ -95,8 +95,8 @@ class mainController
 				return context::SUCCESS;
             }
 			else{
-				$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );
-				$context->correspondance_info = voyageTable::getCorrespondancesInfo();
+				$context->correspondance = voyageTable::getCorrespondances( $_GET['depart'], $_GET['arrivee'], $_GET['nbplace'], $correspondance );//Stocke les valeurs dans la table tmp_correspondance
+				$context->correspondance_info = voyageTable::getCorrespondancesInfo();//Récupre ces valeurs
 				if(!is_null($context->correspondance_info) || $context->correspondance_info == -9999){
 					$i = count($context->correspondance_info);
 					switch ($i){
@@ -140,8 +140,7 @@ class mainController
 		}
 		if(isset($_GET["id_corres"])){
 			$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-			//SELECT * FROM jabaianb.voyage INNER JOIN jabaianb.trajet AS a ON a.id=voyage.trajet INNER JOIN jabaianb.utilisateur AS b ON b.id=voyage.conducteur WHERE trajet = 383;
-			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_GET["id_corres"] .';';
+			$op = 'SELECT array_agg(id) FROM tmp_correspondance WHERE id_corres = '. $_GET["id_corres"] .';';//array-agg(récupère la liste d'id de chaques voyage appartenant à une correspondance)
 			$query = $em->prepare($op);
 			$query->execute();
 			if(empty($query)){
@@ -151,7 +150,7 @@ class mainController
 				$context->corres_info = $query->fetchAll();
 			}
 			$context->corres_info = str_replace("{", "(", $context->corres_info[0]["array_agg"]);
-			$context->corres_info = str_replace("}", ")", $context->corres_info);
+			$context->corres_info = str_replace("}", ")", $context->corres_info);//Traitement de la valeur de retour afin de lui appliquer des paranthèse à la place deds accolades
 			if(!is_null($context->corres_info)){
 				$i = count($context->corres_info);
 				switch ($i){
@@ -210,14 +209,16 @@ class mainController
         if(!is_null(utilisateurTable::getUserByPseudo($_POST['cpseudo'])))
         {
             $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = \''. $_POST['cpseudo'] .'\';';
+            $op = 'SELECT * FROM jabaianb.utilisateur WHERE identifiant = \''. $_POST['cpseudo'] .'\';';//Check si id existe en base
             $query = $em->prepare($op);
             $bool = $query->execute();
             $res = $query->fetch(PDO::FETCH_ASSOC);
+			//Vérifie si lle hash du pass correspond à la base
             if(strcmp(sha1($_POST['cpass']), $res['pass']) == 0)
             {
-				if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}
-                $_SESSION['id'] = $res['id'];
+				if (session_status() !== PHP_SESSION_ACTIVE) {session_start();}//Si session non active, la démarrer (cas d'une erreur interne)
+                //Mise en session des informations
+				$_SESSION['id'] = $res['id'];
                 $_SESSION['nom'] = $res['nom'];
                 $_SESSION['prenom'] = $res['prenom'];
                 $_SESSION['identifiant'] = $res['identifiant'];
@@ -234,6 +235,7 @@ class mainController
 
 	public static function logout($request, $context)
 	{
+		//Suppression des valeurs de session
 		session_unset();
 		//unset($_SESSION);
 		$context->alerts["Réussite"] = "Vous êtes déconnecté";
@@ -250,7 +252,7 @@ class mainController
 		$context->alerts = [];
 		if((isset($_POST['pseudo']) && $_POST['pseudo'] != "") && (isset($_POST['pass']) && $_POST['pass'] != "") && (isset($_POST['nom']) && $_POST['nom'] != "") && (isset($_POST['prenom']) && $_POST['prenom'] != ""))
 		{
-			if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))
+			if(is_null(utilisateurTable::getUserByPseudo($_POST['pseudo'])))//Vérifie si le pseudo n'existe pas en base
 			{
 				$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
 				$op = 'INSERT INTO jabaianb.utilisateur (identifiant, pass, nom, prenom) VALUES (\'' . $_POST["pseudo"] . '\', \'' . sha1($_POST["pass"]) . '\', \'' . $_POST["nom"] . '\', \'' . $_POST["prenom"] . '\');';
@@ -280,7 +282,6 @@ class mainController
 		if($context->getSessionAttribute('id')){$context->isLogged = true;}
 		else {$context->isLogged = false;}
         return context::SUCCESS;
-		return context::SUCCESS;
 	}
 
 	public static function reserverG($request, $context)
@@ -289,7 +290,7 @@ class mainController
         if(isset($_POST['id_corres']) and isset($_POST['nbplace']))
         {
             $dispo = voyageTable::checkCorresDispo( $_POST['id_corres'], $_POST['nbplace']);
-
+			//On vérifie si les voyages sont toujours valide
             $context->dispo = $dispo;
 
             if( $dispo[0]['checkcorresdispo'] == true )
@@ -297,19 +298,19 @@ class mainController
                 $voyages = voyageTable::getVoyageByCorresId( $_POST['id_corres'] );
 
                 $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-
+				
                 foreach ($voyages as $key => $voyage)
                 {
+					//Soustraction des places dans voyage
                     $op = 'update jabaianb.voyage set nbplace = nbplace - ' . $_POST['nbplace'] . ' where id = ' . $voyage['id'] . ';';
                     $query = $em->prepare($op);
                     $bool = $query->execute();
-
+					//Récupération du dernier id siponible pour création
                     $query = $em->prepare('select max( id )+1 as id from jabaianb.reservation limit 1;');
                     $query->execute();
-
                     $res = $query->fetch(PDO::FETCH_ASSOC);
                     $newID = $res['id'];
-
+					//Insertion dans la base
                     $op = 'insert into jabaianb.reservation values (' .$newID .', '.$voyage['id'].', '.$_SESSION['id'].');';
                     $query = $em->prepare($op);
                     $bool = $query->execute();
@@ -324,6 +325,7 @@ class mainController
     	}
 	}
 
+	//Voir réserverG, fonoctionnement identique sans foreach
 	public static function reserverSolo($request, $context){
 		if(isset($_POST["id_voyage"])){
 
@@ -369,11 +371,13 @@ class mainController
 
 
 	public static function profil($request, $context){
-		if(isset($_SESSION)){$context->session = $_SESSION;}
+		if(isset($_SESSION)){$context->session = $_SESSION;}//Récupération des variables de session
 		$em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
+
 		$op = "SELECT * FROM jabaianb.reservation JOIN jabaianb.utilisateur AS a ON a.id=reservation.voyage JOIN jabaianb.voyage AS b ON b.id=reservation.voyage JOIN jabaianb.trajet AS c ON c.id=b.trajet WHERE voyageur = " . $context->getSessionAttribute('id') . ";";
 		$query = $em->prepare($op);
 		$bool = $query->execute();
+		
 		$context->resa = $query->fetchAll();
 		return context::SUCCESS;
 	}
@@ -381,13 +385,15 @@ class mainController
 	public static function ajouterValide($request,$context)
     {
         $em = dbconnection::getInstance()->getEntityManager()->getConnection() ;
-        $op = 'SELECT * FROM jabaianb.trajet WHERE depart = \'' . $_POST['depart'] .'\' AND arrivee = \'' . $_POST['arrivee'] . '\';';
+        //Requête récupérant le trajet dans la base
+		$op = 'SELECT * FROM jabaianb.trajet WHERE depart = \'' . $_POST['depart'] .'\' AND arrivee = \'' . $_POST['arrivee'] . '\';';
         $query = $em->prepare($op);
         $bool = $query->execute();
         $res = $query->fetch(PDO::FETCH_ASSOC);
-		$context->op = [];
+		$context->op = [];//Relique débugage
+		//Calcul du tarif
         $tarif = $res['distance']*$_POST['tarif'];
-
+		//Insertion dans table
         $op2 = 'INSERT INTO jabaianb.voyage (conducteur, trajet, tarif, nbplace, heuredepart, contraintes) VALUES (?, ?, ?, ?, ?, ?)';
         $query2 = $em->prepare($op2);
         $bool2 = $query2->execute(array($_SESSION['id'], $res['id'], $tarif, $_POST['nbplace'], $_POST['hdepart'], $_POST['contrainte']));

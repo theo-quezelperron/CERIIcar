@@ -1,5 +1,8 @@
+
+//Fonction appel ajax dispatcher pour recherche voyage
 $('body').on("click", '#btn_1', function(){
     console.log("clique");
+    //div stockant le fait d'être log ou non (ajaxDispatcher session bug)
     let y = document.getElementById('isLogged')
     console.log(y);
     let urlString = "ajaxDispatcher.php?action=tableau&depart=" + $("#depart").val() + "&arrivee=" + $("#arrivee").val() + "&nbplace=" + $("#nbplace").val() + "&correspondance=" + ($("#correspondance").is(":checked") ? $("#correspondance").val() : 'false') + "&isLogged=" + y.dataset.value;
@@ -12,6 +15,7 @@ $('body').on("click", '#btn_1', function(){
         console.log(result);
         let parsed_content = JSON.parse(result);
         $("#htmlResult").html(parsed_content.corps);
+        //Affichage du bandeau de notification en lui affectant la classe correspondante 
         switch (parsed_content.bandeau.class) {
           case "Alerte":
             $("#bandeau").removeClass();
@@ -36,7 +40,7 @@ $('body').on("click", '#btn_1', function(){
         document.getElementsByClassName("alert")[0].style.display = "block";
         setTimeout(function(){
           document.getElementsByClassName("alert")[0].style.display = "none";// or fade, css display however you'd like.
-        }, 10000);
+        }, 10000);//Message disparait automatiquement après 10 secondes
         
       },
       error: function(result){
@@ -53,10 +57,11 @@ $('body').on("click", '#btn_1', function(){
     
   });
 
+  //Fonction appel ajax dispatcher pour recherche correspondance dans voyage
   $('body').on('click', '.detail_corres', function () {
     $(this).attr('id')
     console.log($(this).attr('id'));
-    var x = document.getElementById('isLogged')
+    var x = document.getElementById('isLogged');
     let urlString = "ajaxDispatcher.php?action=detailCorres&id_corres=" + $(this).attr('id') + "&isLogged=" + x.dataset.value;
     let test = $.ajax({
       url: urlString,
@@ -105,6 +110,7 @@ $('body').on("click", '#btn_1', function(){
     });
   });
 
+  //Fonction appel ajax dispatcher pour enregistrement nouveau compte
   $('body').on('click', '.enregistrement', function () {
     $(this).attr('id')
     console.log($(this));
@@ -158,6 +164,7 @@ $('body').on("click", '#btn_1', function(){
     });
   });
 
+  //Fonction appel ajax dispatcher pour reservation ensemble des voyages (Amiens - Marseille = Amiens - Paris | Paris - Marsseille)
   $('body').on('click', '.reserverG', function () {
     console.log(this.dataset.value);
     let z = this.dataset.value;
@@ -210,6 +217,7 @@ $('body').on("click", '#btn_1', function(){
     });
   });
 
+  //Fonction appel ajax dispatcher pour reservation d'un seul voyage
   $('body').on('click', '.reserverS', function () {
     console.log(this.dataset.value);
     let z = this.dataset.value;

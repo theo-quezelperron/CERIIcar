@@ -29,6 +29,7 @@
           <a class="nav-link" href="monApplication.php?action=recherche">Recherche</a>
         </li>
         <?php
+        //Modifi navbar en cas d'uilisateur connecté ou non
         if(!empty($_SESSION)){
           echo '<li class="nav-item">
           <a class="nav-link" href="monApplication.php?action=ajouter">Ajouter un voyage</a>
